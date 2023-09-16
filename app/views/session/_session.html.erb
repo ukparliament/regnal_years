@@ -1,0 +1,11 @@
+<tr>
+	<%= content_tag( 'td', link_to( session.parliament_period_number.ordinalize, parliament_period_show_url( :parliament_period => session.parliament_period_id ) ) ) %>
+	<%= content_tag( 'td', link_to( session.number.ordinalize, session_show_url( :session => session ) ) ) %>
+	<%= content_tag( 'td', session.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% if session.end_on -%>
+		<%= content_tag( 'td', session.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+	<%= content_tag( 'td', session.citation ) %>
+</tr>

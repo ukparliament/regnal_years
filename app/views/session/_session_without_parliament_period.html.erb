@@ -1,0 +1,10 @@
+<tr>
+	<%= content_tag( 'td', link_to( session_without_parliament_period.number.ordinalize, session_show_url( :session => session_without_parliament_period ) ) ) %>
+	<%= content_tag( 'td', session_without_parliament_period.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% if session_without_parliament_period.end_on -%>
+		<%= content_tag( 'td', session_without_parliament_period.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+	<%= content_tag( 'td', session_without_parliament_period.citation ) %>
+</tr>
