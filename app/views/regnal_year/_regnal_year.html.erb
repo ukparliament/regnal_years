@@ -1,5 +1,5 @@
 <tr>
-	<%= content_tag( 'td', regnal_year.display_label ) %>
+	<%= content_tag( 'td', link_to( regnal_year.display_label, regnal_year_show_url( :regnal_year => regnal_year ) ) ) %>
 	<%= content_tag( 'td', regnal_year.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
 	<% if regnal_year.end_on != Date.today -%>
 		<%= content_tag( 'td', regnal_year.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
