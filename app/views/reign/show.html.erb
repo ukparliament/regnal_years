@@ -1,0 +1,15 @@
+<div id="regnal-years">
+	<%= content_tag( 'h2', 'Regnal years' ) %>
+	<table>
+		<thead>
+			<tr>
+				<%= content_tag( 'td', 'Regnal year' ) %>
+				<%= content_tag( 'td', 'Start date' ) %>
+				<%= content_tag( 'td', 'End date' ) %>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render :partial => 'regnal_year/regnal_year', :collection => @reign.regnal_years %>
+		</tbody>
+	</table>
+</div>
