@@ -1,0 +1,13 @@
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'Title' ) %>
+			<%= content_tag( 'td', 'Date of birth' ) %>
+			<%= content_tag( 'td', 'Date of death' ) %>
+			<%= content_tag( 'td', 'Wikidata ID' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'monarch', :collection => @monarchs %>
+	</tbody>
+</table>

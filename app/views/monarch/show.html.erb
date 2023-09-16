@@ -1,0 +1,17 @@
+<%= content_tag( 'p', @monarch.display_dates ) %>
+<%= content_tag( 'p', "Wikidata ID: #{link_to( @monarch.wikidata_id, "https://www.wikidata.org/wiki/#{@monarch.wikidata_id}" )}".html_safe ) %>
+
+<div id="reigns">
+	<%= content_tag( 'h2', 'Reigns' ) %>
+	<table>
+		<thead>
+			<tr>
+				<%= content_tag( 'td', 'Monarch' ) %>
+				<%= content_tag( 'td', 'Dates' ) %>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render :partial => 'reign/reign', :collection => @monarch.reigns %>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,11 @@
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'Monarch' ) %>
+			<%= content_tag( 'td', 'Dates' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'reign', :collection => @reigns %>
+	</tbody>
+</table>

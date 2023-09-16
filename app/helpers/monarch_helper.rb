@@ -1,0 +1,2 @@
+module MonarchHelper
+end

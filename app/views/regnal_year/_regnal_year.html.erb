@@ -1,0 +1,9 @@
+<tr>
+	<%= content_tag( 'td', regnal_year.display_label ) %>
+	<%= content_tag( 'td', regnal_year.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% if regnal_year.end_on != Date.today -%>
+		<%= content_tag( 'td', regnal_year.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+</tr>

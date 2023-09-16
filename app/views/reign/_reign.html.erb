@@ -1,0 +1,4 @@
+<tr>
+	<%= content_tag( 'td', link_to( reign.monarch_title, monarch_show_url( :monarch => reign.monarch_id )) ) %>
+	<%= content_tag( 'td', link_to( reign.display_dates, reign_show_url( :reign => reign ) ) ) %>
+</tr>

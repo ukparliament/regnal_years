@@ -1,0 +1,12 @@
+<tr>
+	<%= content_tag( 'td', link_to( monarch.title, monarch_show_url( :monarch => monarch ) ) ) %>
+	<%= content_tag( 'td', monarch.date_of_birth.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<td>
+		<% if monarch.date_of_death -%>
+			<%= monarch.date_of_death.strftime( $DATE_DISPLAY_FORMAT ) %>
+		<% else -%>
+			-
+		<% end -%>
+	</td>
+	<%= content_tag( 'td', link_to( monarch.wikidata_id, "https://www.wikidata.org/wiki/#{monarch.wikidata_id}" ) ) %>
+</tr>
