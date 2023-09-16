@@ -29,7 +29,7 @@ create table regnal_years (
 	id serial not null,
 	number int not null,
 	start_on date not null,
-	end_on date not null,
+	end_on date,
 	reign_id int not null,
 	constraint fk_reign foreign key (reign_id) references reigns(id),
 	primary key (id)
