@@ -3,9 +3,12 @@ require 'csv'
 task :setup => [
   :import_monarchs,
   :import_reigns,
-  :generate_regnal_years
+  :generate_regnal_years,
+  :import_parliament_periods,
+  :import_sessions
 ]
 
+# ## A task to import monarchs.
 task :import_monarchs => :environment do
   puts "importing monarchs"
   CSV.foreach( 'db/data/monarchs.csv' ) do |row|
@@ -20,6 +23,7 @@ task :import_monarchs => :environment do
   end
 end
 
+# ## A task to import reigns.
 task :import_reigns => :environment do
   puts "importing reigns"
   CSV.foreach( 'db/data/reigns.csv' ) do |row|
@@ -32,6 +36,7 @@ task :import_reigns => :environment do
   end
 end
 
+# ## A task to generate regnal years.
 task :generate_regnal_years => :environment do
   puts "generating regnal years"
   reigns = Reign.all.order( 'start_on' )
@@ -99,6 +104,36 @@ task :generate_regnal_years => :environment do
      end
   end
 end
+
+# ## A task to import parliament periods.
+task :import_parliament_periods => :environment do
+  puts "importing parliament periods"
+  CSV.foreach( 'db/data/parliaments.csv' ) do |row|
+    parliament_period = ParliamentPeriod.new
+    parliament_period.id = row[0]
+    parliament_period.number = row[0]
+    parliament_period.start_on = row[2]
+    parliament_period.end_on = row[4]
+    parliament_period.wikidata_id = row[5]
+    parliament_period.save
+  end
+end
+
+# ## A task to import sessions.
+task :import_sessions => :environment do
+  puts "importing sessions"
+  CSV.foreach( 'db/data/sessions.csv' ) do |row|
+    session = Session.new
+    session.number = row[1]
+    session.start_on = row[2]
+    session.end_on = row[3]
+    session.citation = row[4]
+    session.parliament_period_id = row[0]
+    session.save
+  end
+end																	
+
+
 
 # ## A method to find or create a regnal year.
 def find_or_create_regnal_year( reign, number, start_on, end_on )
