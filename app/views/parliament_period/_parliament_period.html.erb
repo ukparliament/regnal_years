@@ -1,0 +1,10 @@
+<tr>
+	<%= content_tag( 'td', link_to( parliament_period.number.ordinalize, parliament_period_show_url( :parliament_period => parliament_period ) ) ) %>
+	<%= content_tag( 'td', parliament_period.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% if parliament_period.end_on -%>
+		<%= content_tag( 'td', parliament_period.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+	<%= content_tag( 'td', link_to( parliament_period.wikidata_id, "https://www.wikidata.org/wiki/#{parliament_period.wikidata_id}" ) ) %>
+</tr>

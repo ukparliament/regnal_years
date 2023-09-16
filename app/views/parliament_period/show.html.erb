@@ -1,0 +1,19 @@
+<%= content_tag( 'p', @parliament_period.display_dates ) %>
+<%= content_tag( 'p', "Wikidata ID: #{link_to( @parliament_period.wikidata_id, "https://www.wikidata.org/wiki/#{@parliament_period.wikidata_id}" )}".html_safe ) %>
+
+<div id="sessions">
+	<%= content_tag( 'h2', 'Sessions' ) %>
+	<table>
+		<thead>
+			<tr>
+				<%= content_tag( 'td', 'Session' ) %>
+				<%= content_tag( 'td', 'Start date' ) %>
+				<%= content_tag( 'td', 'End date' ) %>
+				<%= content_tag( 'td', 'Citation' ) %>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render :partial => 'session/session_without_parliament_period', :collection => @sessions %>
+		</tbody>
+	</table>
+</div>

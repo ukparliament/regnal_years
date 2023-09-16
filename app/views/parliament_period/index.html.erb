@@ -1,0 +1,13 @@
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'Parliament' ) %>
+			<%= content_tag( 'td', 'Start date' ) %>
+			<%= content_tag( 'td', 'End date' ) %>
+			<%= content_tag( 'td', 'Wikidata ID' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'parliament_period', :collection => @parliament_periods %>
+	</tbody>
+</table>
