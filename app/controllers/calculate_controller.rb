@@ -23,26 +23,17 @@ class CalculateController < ApplicationController
         @error_message = 'You need to enter a valid date.'
       end
       
-    # Otherwise, if no date string parameter has been passed ... 
+    # Otherwise, if no date string parameter has been passed ...
     else
       
       # ... we raise an error that the date is missing.
       @error_message = 'You need to enter a date.'
     end
     
-    # If we've raised an error ...
-    if @error_message
+    # If we've not raised an error ...
+    unless @error_message
       
-      # ... we set the page title to error ...
-      @page_title = "Unable to calculate a session citation"
-      
-      # ... and render the error template.
-      render( :template => 'calculate/error' )
-      
-    # Otherwise, if we've not raised an error ... 
-    else
-      
-      # We find the session this date is in if the session has an date.
+      # We attempt to find the session this date is in if the session has an end date.
       @session = Session.find_by_sql(
         "
           SELECT s.*, pp.number AS parliament_period_number
@@ -54,9 +45,10 @@ class CalculateController < ApplicationController
         "
       ).first
       
-      # Unless we find the session.
+      # Unless we find the session ...
       unless @session
-        puts "wank"
+        
+        # ... we attempt to find the session this date is in if the session has no end date.
         @session = Session.find_by_sql(
           "
             SELECT s.*, pp.number AS parliament_period_number
@@ -69,8 +61,28 @@ class CalculateController < ApplicationController
         ).first
       end
       
+      # If we've not found a session ...
+      unless @session
       
-      @page_title = "Regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
+        # ... we raise an error that the date is not during a session.
+        @error_message = 'The date you entered was not during a parliamentary session.'
+      end
+      
+      # If we've raised an error ...
+      if @error_message
+      
+        # ... we set the page title to error ...
+        @page_title = "Unable to calculate a session citation"
+      
+        # ... and render the error template.
+        render( :template => 'calculate/error' )
+        
+      # Otherwise, if we've not raised an error ...
+      else
+        
+        # ... we set the page title.
+        @page_title = "Regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
+      end
     end
   end
 end

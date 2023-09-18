@@ -58,6 +58,6 @@ class Session < ApplicationRecord
   end
   
   def regnal_year_citation
-    'woof'
+    'this is the citation'
   end
 end
