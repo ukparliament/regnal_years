@@ -5,7 +5,8 @@ task :setup => [
   :import_reigns,
   :generate_regnal_years,
   :import_parliament_periods,
-  :import_sessions
+  :import_sessions,
+  :generate_regnal_year_sessions
 ]
 
 # ## A task to import monarchs.
@@ -70,7 +71,7 @@ task :generate_regnal_years => :environment do
       # ... if the start date of the reign plus a year minus a day is greater than today ...
       if reign.start_on + 1.year - 1.day > Date.today
       
-        # ... we set the end date of the first regnal year to today.
+        # ... we set the end date of the first regnal year to nil.
         regnal_year_end_on = nil
       
       # Otherwise, if the start date of the reign plus a year minus a day is not greater than today ...
@@ -84,13 +85,10 @@ task :generate_regnal_years => :environment do
     # We create the first regnal year.
     find_or_create_regnal_year( reign, regnal_year_number, regnal_year_start_on, regnal_year_end_on )
     
-    
-    
-    
-    # Whilst the end date of the regnal year is less than or equal to the end date of the reign ...
+    # Whilst the end date of the regnal year does not equal the end date of the reign and whilst the end date of the regnal year is not nil ...
     while regnal_year_end_on != reign.end_on and regnal_year_end_on != nil
       
-      # We increment the regnal year number.
+      # ... we increment the regnal year number.
       regnal_year_number += 1
       
       # We increment the regnal year start date by one year.
@@ -108,7 +106,7 @@ task :generate_regnal_years => :environment do
         # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than the end date of the reign ...
         else
       
-          # ... we set the end date of the first regnal year to the start date of the regnal year plus a year minus a day.
+          # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
           regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
         end
       
@@ -124,7 +122,7 @@ task :generate_regnal_years => :environment do
         # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than today ...
         else
       
-          # ... we set the end date of the first regnal year to the start date of the regnal year plus a year minus a day.
+          # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
           regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
         end
       end
@@ -161,7 +159,36 @@ task :import_sessions => :environment do
     session.parliament_period_id = row[0]
     session.save
   end
-end																	
+end
+
+# ## A task to generate regnal year sessions.
+task :generate_regnal_year_sessions => :environment do
+  puts "generating regnal year sessions"
+  
+  # We get all the sessions ...
+  sessions = Session.all.order( 'start_on' )
+  
+  # ... and all the regnal years.
+  regnal_years = RegnalYear.all.order( 'start_on' )
+  
+  # For each session ...
+  sessions.each do |session|
+    
+    # ... and for each regnal year ...
+    regnal_years.each do |regnal_year|
+      
+      # ... if the session overlaps the regnal year ...
+      if session.overlaps_regnal_year?( regnal_year )
+        
+        # ... we create a new session regnal year.
+        session_regnal_year = SessionRegnalYear.new
+        session_regnal_year.session = session
+        session_regnal_year.regnal_year = regnal_year
+        session_regnal_year.save
+      end
+    end
+  end
+end
 
 
 
