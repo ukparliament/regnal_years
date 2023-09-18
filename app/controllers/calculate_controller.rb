@@ -42,7 +42,7 @@ class CalculateController < ApplicationController
     # Otherwise, if we've not raised an error ... 
     else
       
-      # We find the session this date is in.
+      # We find the session this date is in if the session has an date.
       @session = Session.find_by_sql(
         "
           SELECT s.*, pp.number AS parliament_period_number
@@ -53,6 +53,21 @@ class CalculateController < ApplicationController
           ORDER BY start_on
         "
       ).first
+      
+      # Unless we find the session.
+      unless @session
+        puts "wank"
+        @session = Session.find_by_sql(
+          "
+            SELECT s.*, pp.number AS parliament_period_number
+            FROM sessions s, parliament_periods pp
+            WHERE s.parliament_period_id = pp.id
+            AND s.start_on <= '#{@date}'
+            AND s.end_on IS NULL
+            ORDER BY start_on
+          "
+        ).first
+      end
       
       
       @page_title = "Regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
