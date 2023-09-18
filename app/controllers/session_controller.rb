@@ -23,7 +23,7 @@ class SessionController < ApplicationController
         ORDER BY start_on
       "
     ).first
-    @page_title = "#{@session.number.ordinalize} session of the #{@session.parliament_period_number.ordinalize} Parliament of the United Kingdon"
+    @page_title = "#{@session.number.ordinalize} session of the #{@session.parliament_period_number.ordinalize} Parliament of the United Kingdom"
     @regnal_years = @session.regnal_years
   end
 end
