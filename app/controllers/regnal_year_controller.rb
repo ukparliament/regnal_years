@@ -25,5 +25,6 @@ class RegnalYearController < ApplicationController
       "
     ).first
     @page_title = @regnal_year.display_label
+    @sessions = @regnal_year.sessions
   end
 end
