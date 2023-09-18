@@ -1,1 +1,2 @@
 <%= content_tag( 'p', "The regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )} is:" ) %>
+<%= content_tag( 'p', "#{@session.number.ordinalize} session of the #{@session.parliament_period_number.ordinalize} Parliament of the United Kingdom." ) %>
