@@ -24,5 +24,6 @@ class SessionController < ApplicationController
       "
     ).first
     @page_title = "#{@session.number.ordinalize} session of the #{@session.parliament_period_number.ordinalize} Parliament of the United Kingdon"
+    @regnal_years = @session.regnal_years
   end
 end
