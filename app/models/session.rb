@@ -56,4 +56,8 @@ class Session < ApplicationRecord
       "
     )
   end
+  
+  def regnal_year_citation
+    'woof'
+  end
 end
