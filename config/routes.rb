@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   get 'regnal-years' => 'home#index', as: :home
   
+  get 'regnal-years/calculate' => 'calculate#index', as: :calculate
+  
   get 'regnal-years/monarchs' => 'monarch#index', as: :monarch_list
   get 'regnal-years/monarchs/:monarch' => 'monarch#show', as: :monarch_show
   
