@@ -16,7 +16,7 @@ class Session < ApplicationRecord
     # If the session has an end date and the regnal year has an end date ...
     if self.end_on && regnal_year.end_on
     
-      # If the session ends on or after after the regnal year starts and ends on or before the regnal year ends ...
+      # If the regnal year starts on or before the end of the session and ends on or after the start of the session ...
       if regnal_year.start_on <= self.end_on && regnal_year.end_on >= self.start_on
         
         # ... we set overlaps regal year to true.
@@ -28,6 +28,17 @@ class Session < ApplicationRecord
       
       # ... we must be in the latest session and the latest regnal year of the current reign, so we set overlaps regal year to true.
       overlaps_regnal_year = true
+      
+    # Otherwise, if the session has no end date but the regnal year does have an end date ...
+    elsif !self.end_on && regnal_year.end_on
+      
+      # If the regnal year ends on or after the start of the session ...
+      if regnal_year.end_on >= self.start_on
+        
+        # ... we set overlaps regal year to true.
+        overlaps_regnal_year = true
+      end
+      
     end
     overlaps_regnal_year
   end
