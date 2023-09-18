@@ -1,3 +1,4 @@
+drop table if exists session_regnal_years;
 drop table if exists sessions;
 drop table if exists parliament_periods;
 drop table if exists regnal_years;
@@ -52,5 +53,14 @@ create table sessions (
 	citation varchar(20) not null,
 	parliament_period_id int not null,
 	constraint fk_parliament_period foreign key (parliament_period_id) references parliament_periods(id),
+	primary key (id)
+);
+
+create table session_regnal_years (
+	id serial not null,
+	session_id int not null,
+	regnal_year_id int not null,
+	constraint fk_session foreign key (session_id) references sessions(id),
+	constraint fk_regnal_year foreign key (regnal_year_id) references regnal_years(id),
 	primary key (id)
 );
