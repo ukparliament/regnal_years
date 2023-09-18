@@ -1,11 +1,5 @@
 <table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'Regnal year' ) %>
-			<%= content_tag( 'td', 'Start date' ) %>
-			<%= content_tag( 'td', 'End date' ) %>
-		</tr>
-	</thead>
+	<%= render :partial => 'regnal_year_table_header' %>
 	<tbody>
 		<%= render :partial => 'regnal_year', :collection => @regnal_years %>
 	</tbody>
