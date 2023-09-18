@@ -1,13 +1,5 @@
 <table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'Parliament' ) %>
-			<%= content_tag( 'td', 'Session' ) %>
-			<%= content_tag( 'td', 'Start date' ) %>
-			<%= content_tag( 'td', 'End date' ) %>
-			<%= content_tag( 'td', 'Citation' ) %>
-		</tr>
-	</thead>
+	<%= render :partial => 'session_table_head' %>
 	<tbody>
 		<%= render :partial => 'session', :collection => @sessions %>
 	</tbody>
