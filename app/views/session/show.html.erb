@@ -3,7 +3,7 @@
 <%= render :partial => 'previous_next' %>
 
 <%= content_tag( 'p', "Parliament: #{link_to( @session.parliament_period_number.ordinalize, parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )}".html_safe ) %>
-<%= content_tag( 'p', "Citation by year: #{@session.citation}" ) %>
+<%= content_tag( 'p', "Citation by calendar years: #{@session.citation}" ) %>
 <%= content_tag( 'p', "Citation by regnal year : #{@session.regnal_year_citation}" ) %>
 
 
