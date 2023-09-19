@@ -26,4 +26,12 @@ class RegnalYear < ApplicationRecord
       "
     )
   end
+  
+  def previous
+    RegnalYear.all.where( "start_on < ?", self.start_on ).order( 'start_on desc' ).first
+  end
+  
+  def next
+    RegnalYear.all.where( "start_on > ?", self.start_on ).order( 'start_on' ).first
+  end
 end
