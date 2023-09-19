@@ -26,5 +26,7 @@ class RegnalYearController < ApplicationController
     ).first
     @page_title = @regnal_year.display_label
     @sessions = @regnal_year.sessions
+    @previous_regnal_year = @regnal_year.previous
+    @next_regnal_year = @regnal_year.next
   end
 end
