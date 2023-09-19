@@ -107,6 +107,30 @@ class Session < ApplicationRecord
         end
       end
     end
+    
+    # If the session overlaps a single regnal year ...
+    if regnal_years.size == 1
+      
+      # We set the loop count to zero.
+      loop_count = 0
+      
+      # We get all the sessions for a regnal year and store so we only query once.
+      sessions = regnal_years[0].sessions
+      
+      # For each session overlapping a regnal year ...
+      sessions.each do |session|
+      
+        # ... we increment the loop count by one.
+        loop_count += 1
+        
+        # If the session is this session ...
+        if session == self
+          
+          # We append the session number to the citation.
+          citation += ' (Sess.' + loop_count.to_s + ')'
+        end
+      end
+    end
     citation
   end
 end
