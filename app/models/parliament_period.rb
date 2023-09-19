@@ -17,4 +17,12 @@ class ParliamentPeriod < ApplicationRecord
       "
     )
   end
+  
+  def previous
+    ParliamentPeriod.all.where( "start_on < ?", self.start_on ).order( 'start_on desc' ).first
+  end
+  
+  def next
+    ParliamentPeriod.all.where( "start_on > ?", self.start_on ).order( 'start_on' ).first
+  end
 end
