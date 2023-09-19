@@ -1,0 +1,4 @@
+<ul>
+	<%= content_tag( 'li', link_to( 'Previous Parliament', parliament_period_show_url( :parliament_period => @previous_parliament_period ) ) ) if @previous_parliament_period %>
+	<%= content_tag( 'li', link_to( 'Next Parliament', parliament_period_show_url( :parliament_period => @next_parliament_period ) ) ) if @next_parliament_period %>
+</ul>
