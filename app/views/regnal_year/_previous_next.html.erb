@@ -1,0 +1,4 @@
+<ul>
+	<%= content_tag( 'li', link_to( 'Previous regnal year', regnal_year_show_url( :regnal_year => @previous_regnal_year ) ) ) if @previous_regnal_year %>
+	<%= content_tag( 'li', link_to( 'Next regnal year', regnal_year_show_url( :regnal_year => @next_regnal_year ) ) ) if @next_regnal_year %>
+</ul>
