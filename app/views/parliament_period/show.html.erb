@@ -1,4 +1,7 @@
 <%= content_tag( 'p', @parliament_period.display_dates ) %>
+
+<%= render :partial => 'previous_next' %>
+
 <%= content_tag( 'p', "Wikidata ID: #{link_to( @parliament_period.wikidata_id, "https://www.wikidata.org/wiki/#{@parliament_period.wikidata_id}" )}".html_safe ) %>
 
 <div id="sessions">
