@@ -127,7 +127,7 @@ class Session < ApplicationRecord
         if session == self
           
           # We append the session number to the citation.
-          citation += ' (Sess.' + loop_count.to_s + ')'
+          citation += ' (Sess. ' + loop_count.to_s + ')'
         end
       end
     end
