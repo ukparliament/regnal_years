@@ -57,7 +57,56 @@ class Session < ApplicationRecord
     )
   end
   
+  # ## A method to calculate the regnal year citation for a session.
   def regnal_year_citation
-    'this is the citation'
+    
+    # We create a string to store the citation.
+    citation = ''
+    
+    # We set the loop count to zero.
+    loop_count = 0
+    
+    # We get all the regnal years for a session and store so we only query once.
+    regnal_years = self.regnal_years
+    
+    # For each regnal year ...
+    regnal_years.each do |regnal_year|
+      
+      # ... we increment the loop count by one.
+      loop_count += 1
+      
+      # We calculate if this regnal year has preceding regnal years.
+      has_preceding_regnal_years = ( loop_count - 1 != 0 )
+      
+      # We calculate if this regnal year has following regnal years.
+      has_following_regnal_years = ( loop_count != regnal_years.size )
+      
+      # We add the number of the regnal year to the citation.
+      citation += regnal_year.number.to_s + ' '
+      
+      # If the regnal year does not have any following regnal years.
+      unless has_following_regnal_years
+        
+        # ... we add the monarch to the citation.
+        citation += regnal_year.monarch_abbreviation + ' '
+        
+      # Otherwise, if the regnal year does have following regnal years ...
+      else
+        
+        # If the next regnal year has a different monarch to this regnal year ...
+        if regnal_years[loop_count].monarch_abbreviation != regnal_year.monarch_abbreviation
+          
+          # ... we add the monarch to the citation.
+          citation += regnal_year.monarch_abbreviation + ', '
+          
+        # Otherwise, if the next regnal year has the same monarch as this regnal year ... 
+        else
+          
+          # ... we separate the regnal year numbers with an ampersand.
+          citation += '&  '
+        end
+      end
+    end
+    citation
   end
 end
