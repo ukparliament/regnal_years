@@ -1,5 +1,7 @@
 <%= content_tag( 'p', @regnal_year.display_dates ) %>
 
+<%= render :partial => 'previous_next' %>
+
 <%= content_tag( 'p', "In the #{link_to( 'reign', reign_show_url( :reign => @regnal_year.reign_id) )} of #{link_to( @regnal_year.monarch_title, monarch_show_url( :monarch => @regnal_year.monarch_id ) )}.".html_safe ) %>
 
 <div id="session">
