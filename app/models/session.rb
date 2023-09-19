@@ -102,16 +102,16 @@ class Session < ApplicationRecord
         # Otherwise, if the next regnal year has the same monarch as this regnal year ... 
         else
           
+          # If regnal years array extends past the next regnal year ...
           if regnal_years.size > loop_count + 1
+            
+            # ... we separate the regnal year numbers with a comma.
             citation += ',  '
           else
             
             # ... we separate the regnal year numbers with an ampersand.
             citation += ' &  '
           end
-            
-          
-          
         end
       end
     end
