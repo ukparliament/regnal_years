@@ -82,13 +82,13 @@ class Session < ApplicationRecord
       has_following_regnal_years = ( loop_count != regnal_years.size )
       
       # We add the number of the regnal year to the citation.
-      citation += regnal_year.number.to_s + ' '
+      citation += regnal_year.number.to_s
       
       # If the regnal year does not have any following regnal years.
       unless has_following_regnal_years
         
         # ... we add the monarch to the citation.
-        citation += regnal_year.monarch_abbreviation + ' '
+        citation += ' ' + regnal_year.monarch_abbreviation + ' '
         
       # Otherwise, if the regnal year does have following regnal years ...
       else
@@ -102,8 +102,16 @@ class Session < ApplicationRecord
         # Otherwise, if the next regnal year has the same monarch as this regnal year ... 
         else
           
-          # ... we separate the regnal year numbers with an ampersand.
-          citation += '&  '
+          if regnal_years.size > loop_count + 1
+            citation += ',  '
+          else
+            
+            # ... we separate the regnal year numbers with an ampersand.
+            citation += ' &  '
+          end
+            
+          
+          
         end
       end
     end
@@ -111,23 +119,27 @@ class Session < ApplicationRecord
     # If the session overlaps a single regnal year ...
     if regnal_years.size == 1
       
-      # We set the loop count to zero.
-      loop_count = 0
-      
-      # We get all the sessions for a regnal year and store so we only query once.
+      # ... we get all the sessions for a regnal year and store so we only query once.
       sessions = regnal_years[0].sessions
       
-      # For each session overlapping a regnal year ...
-      sessions.each do |session|
-      
-        # ... we increment the loop count by one.
-        loop_count += 1
+      # If the count of sessions for a regnal year is greater than one ...
+      if sessions.size > 1
         
-        # If the session is this session ...
-        if session == self
+        # We set the loop count to zero.
+        loop_count = 0
+      
+        # For each session overlapping a regnal year ...
+        sessions.each do |session|
+      
+          # ... we increment the loop count by one.
+          loop_count += 1
+        
+          # If the session is this session ...
+          if session == self
           
-          # We append the session number to the citation.
-          citation += ' (Sess. ' + loop_count.to_s + ')'
+            # We append the session number to the citation.
+            citation += ' (Sess. ' + loop_count.to_s + ')'
+          end
         end
       end
     end
