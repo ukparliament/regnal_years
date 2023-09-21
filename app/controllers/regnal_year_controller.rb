@@ -4,9 +4,8 @@ class RegnalYearController < ApplicationController
     @regnal_years = RegnalYear.find_by_sql(
       "
         SELECT ry.*, m.abbreviation AS monarch_abbreviation
-        FROM regnal_years ry, reigns r, monarchs m
-        WHERE ry.reign_id = r.id
-        AND r.monarch_id = m.id
+        FROM regnal_years ry, monarchs m
+        WHERE ry.monarch_id = m.id
         ORDER BY start_on
       "
     )
@@ -17,9 +16,8 @@ class RegnalYearController < ApplicationController
     @regnal_year = RegnalYear.find_by_sql(
       "
         SELECT ry.*, m.title AS monarch_title, m.id AS monarch_id, m.abbreviation AS monarch_abbreviation
-        FROM regnal_years ry, reigns r, monarchs m
-        WHERE ry.reign_id = r.id
-        AND r.monarch_id = m.id
+        FROM regnal_years ry, monarchs m
+        WHERE ry.monarch_id = m.id
         AND ry.id = #{regnal_year}
         ORDER BY start_on
       "
