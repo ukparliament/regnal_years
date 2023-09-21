@@ -6,9 +6,10 @@ class ReignController < ApplicationController
     
     @reigns = Reign.find_by_sql( 
       "
-        SELECT r.*, m.title AS monarch_title
-        FROM REIGNS r, monarchs m
+        SELECT r.*, k.name AS kingdom_name, m.title AS monarch_title
+        FROM REIGNS r, monarchs m, kingdoms k
         WHERE r.monarch_id = m.id
+        AND r.kingdom_id = k.id
         ORDER BY r.start_on
       "
     )
@@ -18,9 +19,10 @@ class ReignController < ApplicationController
     reign = params[:reign]
     @reign = Reign.find_by_sql( 
       "
-        SELECT r.*, m.title AS monarch_title
-        FROM REIGNS r, monarchs m
+        SELECT r.*, k.name AS kingdom_name, m.title AS monarch_title
+        FROM reigns r, monarchs m, kingdoms k
         WHERE r.monarch_id = m.id
+        AND r.kingdom_id = k.id
         AND r.id = #{reign}
         ORDER BY r.start_on
       "
