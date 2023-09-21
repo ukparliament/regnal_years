@@ -13,6 +13,13 @@
         font-family: system-ui;
       }
       h1 {font-weight: normal;}
+      
+      table {
+  border-collapse: collapse;
+  width:100%;
+}
+      td {padding:0.5em 0.25em;}
+      tr {border-bottom:thin dotted gray;}
     </style>
     <title><%= @page_title || 'Regnal years' %></title>
 	<%= csrf_meta_tags %>
