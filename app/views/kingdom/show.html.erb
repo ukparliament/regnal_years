@@ -1,0 +1,11 @@
+<%= content_tag( 'p', @kingdom.display_dates ) %>
+
+<div id="reigns">
+	<%= content_tag( 'h2', 'Reigns' ) %>
+	<table>
+		<%= render :partial => 'reign/reign_table_header' %>
+		<tbody>
+			<%= render :partial => 'reign/reign', :collection => @kingdom.reigns %>
+		</tbody>
+	</table>
+</div>
