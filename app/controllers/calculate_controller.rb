@@ -81,7 +81,7 @@ class CalculateController < ApplicationController
       else
         
         # ... we set the page title.
-        @page_title = "Regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
+        @page_title = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
       end
     end
   end
