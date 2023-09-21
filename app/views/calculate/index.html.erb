@@ -1,6 +1,13 @@
-<%= content_tag( 'p', "The regnal year session citation for #{@date.strftime( $DATE_DISPLAY_FORMAT )} is:" ) %>
+<table>
+	<tr>
+		<%= content_tag( 'td', 'Citation by regnal years:' ) %>
+		<%= content_tag( 'td', @session.regnal_years_citation ) %>
+	</tr>
+	<tr>
+		<%= content_tag( 'td', 'Citation by calendar years:' ) %>
+		<%= content_tag( 'td', @session.calendar_years_citation ) %>
+	</tr>
+</table>
 
-<%= content_tag( 'p', @session.regnal_year_citation, :class => 'regnal-year-citation' )%>
 
-
-<%= content_tag( 'p', "The #{link_to( "#{@session.number.ordinalize} session", session_show_url( :session => @session ) )} of the #{link_to( "#{@session.parliament_period_number.ordinalize} Parliament", parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )} of the United Kingdom.".html_safe ) %>
+<%= content_tag( 'p', "#{@date.strftime( $DATE_DISPLAY_FORMAT )} fell during the #{link_to( "#{@session.number.ordinalize} session", session_show_url( :session => @session ) )} of the #{link_to( "#{@session.parliament_period_number.ordinalize} Parliament", parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )} of the United Kingdom.".html_safe ) %>
