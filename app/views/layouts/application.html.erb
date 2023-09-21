@@ -3,23 +3,10 @@
 <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <style>
-      body {
-        max-width: 80ch;
-        padding: 1em;
-        line-height: 1.4;
-        font-size: 1.2em;
-        margin: auto;
-        font-family: system-ui;
-      }
-      h1 {font-weight: normal;}
-      
-      table {
-  border-collapse: collapse;
-  width:100%;
-}
-      td {padding:0.5em 0.25em;}
-      tr {border-bottom:thin dotted gray;}
+    h1 {font-weight:normal;}
+    a {text-decoration:underline;}
     </style>
     <title><%= @page_title || 'Regnal years' %></title>
 	<%= csrf_meta_tags %>
