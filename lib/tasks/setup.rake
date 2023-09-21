@@ -293,13 +293,13 @@ task :generate_session_regnal_year_citations => :environment do
         loop_count = 0
       
         # For each session overlapping a regnal year ...
-        sessions.each do |session|
+        sessions.each do |session_item|
       
           # ... we increment the loop count by one.
           loop_count += 1
         
           # If the session is this session ...
-          if session == self
+          if session_item == session
           
             # We append the session number to the citation.
             citation += ' (Sess. ' + loop_count.to_s + ')'
