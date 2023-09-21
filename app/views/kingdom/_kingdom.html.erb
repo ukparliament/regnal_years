@@ -1,0 +1,13 @@
+<tr>
+	<%= content_tag( 'td', link_to( kingdom.name, kingdom_show_url( :kingdom => kingdom ) ) ) %>
+	<% if kingdom.start_on -%>
+		<%= content_tag( 'td', kingdom.start_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+	<% if kingdom.end_on -%>
+		<%= content_tag( 'td', kingdom.end_on.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end -%>
+</tr>

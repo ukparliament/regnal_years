@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   
   get 'regnal-years/calculate' => 'calculate#index', as: :calculate
   
+  get 'regnal-years/kingdoms' => 'kingdom#index', as: :kingdom_list
+  get 'regnal-years/kingdoms/:kingdom' => 'kingdom#show', as: :kingdom_show
+  
   get 'regnal-years/monarchs' => 'monarch#index', as: :monarch_list
   get 'regnal-years/monarchs/:monarch' => 'monarch#show', as: :monarch_show
   
@@ -24,4 +27,7 @@ Rails.application.routes.draw do
   
   get 'regnal-years/sessions' => 'session#index', as: :session_list
   get 'regnal-years/sessions/:session' => 'session#show', as: :session_show
+  
+  get 'regnal-years/meta' => 'meta#index', as: :meta_list
+  get 'regnal-years/meta/schema' => 'meta#schema', as: :meta_schema
 end

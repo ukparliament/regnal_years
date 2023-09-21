@@ -4,8 +4,15 @@ drop table if exists parliament_periods;
 drop table if exists regnal_years;
 drop table if exists reigns;
 drop table if exists monarchs;
+drop table if exists kingdoms;
 
-
+create table kingdoms (
+	id int not null,
+	name varchar(255) not null,
+	start_on date,
+	end_on date,
+	primary key (id)
+);
 
 create table monarchs (
 	id int not null,
@@ -21,8 +28,10 @@ create table reigns (
 	id int not null,
 	start_on date not null,
 	end_on date,
+	kingdom_id int not null,
 	monarch_id int not null,
 	constraint fk_monarch foreign key (monarch_id) references monarchs(id),
+	constraint fk_kingdom foreign key (kingdom_id) references kingdoms(id),
 	primary key (id)
 );
 
@@ -31,8 +40,8 @@ create table regnal_years (
 	number int not null,
 	start_on date not null,
 	end_on date,
-	reign_id int not null,
-	constraint fk_reign foreign key (reign_id) references reigns(id),
+	monarch_id int not null,
+	constraint fk_monarch foreign key (monarch_id) references monarchs(id),
 	primary key (id)
 );
 
@@ -50,7 +59,8 @@ create table sessions (
 	number int not null,
 	start_on date not null,
 	end_on date,
-	citation varchar(20) not null,
+	calendar_years_citation varchar(50) not null,
+	regnal_years_citation varchar(50),
 	parliament_period_id int not null,
 	constraint fk_parliament_period foreign key (parliament_period_id) references parliament_periods(id),
 	primary key (id)

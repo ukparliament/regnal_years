@@ -1,15 +1,4 @@
-<div id="regnal-years">
-	<%= content_tag( 'h2', 'Regnal years' ) %>
-	<table>
-		<thead>
-			<tr>
-				<%= content_tag( 'td', 'Regnal year' ) %>
-				<%= content_tag( 'td', 'Start date' ) %>
-				<%= content_tag( 'td', 'End date' ) %>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render :partial => 'regnal_year/regnal_year', :collection => @reign.regnal_years %>
-		</tbody>
-	</table>
-</div>
+<%= content_tag( 'p', @reign.display_dates ) %>
+
+<%= content_tag( 'p', "Monarch: #{link_to( @reign.monarch_title, monarch_show_url( :monarch => @reign.monarch_id ) )}".html_safe ) %>
+<%= content_tag( 'p', "Kingdom: #{link_to( @reign.kingdom_name, kingdom_show_url( :kingdom => @reign.kingdom_id ) )}".html_safe ) %>

@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<header>
-			<%= link_to( 'UK regnal year citation generator', home_url ) %> &mdash; powered by House of Commons librarians
+			<%= link_to( 'UK Parliament session citations', home_url ) %> &mdash; powered by House of Commons librarians
 		</header>
 		<main>
 			<h1><%= @page_title || 'Regnal years' %></h1>
@@ -33,7 +33,15 @@
 					<%= link_to( 'Reigns', reign_list_url )  %>
 -
 					<%= link_to( 'Monarchs', monarch_list_url )  %>
+					&bullet;
+					<%= link_to( 'Kingdoms', kingdom_list_url )  %>
 				</p>
+				<p>
+					<%= link_to( 'About', meta_list_url )  %>
+				</p>
+				<p>
+					Made available under an <%= link_to( 'Open Parliament Licence', 'https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/' ) %>.
+				</p>					
 			</nav>
 		</footer>
 	</body>

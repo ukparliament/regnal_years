@@ -4,14 +4,19 @@
 <div id="reigns">
 	<%= content_tag( 'h2', 'Reigns' ) %>
 	<table>
-		<thead>
-			<tr>
-				<%= content_tag( 'td', 'Monarch' ) %>
-				<%= content_tag( 'td', 'Dates' ) %>
-			</tr>
-		</thead>
+		<%= render :partial => 'reign/reign_table_header' %>
 		<tbody>
 			<%= render :partial => 'reign/reign', :collection => @monarch.reigns %>
+		</tbody>
+	</table>
+</div>
+
+<div id="regnal-years">
+	<%= content_tag( 'h2', 'Regnal years' ) %>
+	<table>
+		<%= render :partial => 'regnal_year/regnal_year_table_header' %>
+		<tbody>
+			<%= render :partial => 'regnal_year/regnal_year', :collection => @monarch.regnal_years %>
 		</tbody>
 	</table>
 </div>
