@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<%= content_tag( 'title', "Regnal years - #{@page_title}" ) %>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<%= csrf_meta_tags %>
+<html lang="en-GB">
+<meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="date=no" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Lighter</title>
+    <style>
+      body {
+        max-width: 80ch;
+        padding: 1em;
+        line-height: 1.4;
+        font-size: 1.2em;
+        margin: auto;
+        font-family: system-ui;
+      }
+      h1 {font-weight: normal;}
+    </style>
+    <title><%= @page_title || 'Regnal years' %></title>
+	<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 	</head>
 	<body>
