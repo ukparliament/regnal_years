@@ -1,6 +1,6 @@
 class RegnalYear < ApplicationRecord
   
-  belongs_to :reign
+  belongs_to :monarch
   
   def display_dates
     display_dates = self.start_on.strftime( $DATE_DISPLAY_FORMAT ) + ' - '
