@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<%= content_tag( 'title', "Regnal years - #{@page_title}" ) %>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<%= csrf_meta_tags %>
+<html lang="en-GB">
+<meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+    h1 {font-weight:normal;}
+    a {text-decoration:underline;}
+    </style>
+    <title><%= @page_title || 'Regnal years' %></title>
+	<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 	</head>
 	<body>
 		<header>
-			<%= link_to( 'UK regnal year citation generator', home_url ) %> &mdash; powered by House of Commons librarians</p>
+			<%= link_to( 'UK regnal year citation generator', home_url ) %> &mdash; powered by House of Commons librarians
 		</header>
 		<main>
 			<h1><%= @page_title || 'Regnal years' %></h1>
@@ -18,13 +24,13 @@
 			<nav>
 				<p>
 					<%= link_to( 'Parliaments', parliament_period_list_url )  %>
-					&bullet;
+-
 					<%= link_to( 'Sessions', session_list_url )  %>
-					&bullet;
+-
 					<%= link_to( 'Regnal years', regnal_year_list_url )  %>
-					&bullet;
+-
 					<%= link_to( 'Reigns', reign_list_url )  %>
-					&bullet;
+-
 					<%= link_to( 'Monarchs', monarch_list_url )  %>
 					&bullet;
 					<%= link_to( 'Kingdoms', kingdom_list_url )  %>
