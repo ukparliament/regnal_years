@@ -9,11 +9,24 @@ class Monarch < ApplicationRecord
   def reigns
     Reign.find_by_sql( 
       "
-        SELECT r.*, m.title AS monarch_title
-        FROM REIGNS r, monarchs m
+        SELECT r.*, k.name AS kingdom_name, m.title AS monarch_title
+        FROM REIGNS r, monarchs m, kingdoms k
         WHERE r.monarch_id = m.id
+        AND r.kingdom_id = k.id
         AND m.id = #{self.id}
         ORDER BY r.start_on
+      "
+    )
+  end
+  
+  def regnal_years
+    @regnal_years = RegnalYear.find_by_sql(
+      "
+        SELECT ry.*, m.abbreviation AS monarch_abbreviation
+        FROM regnal_years ry, monarchs m
+        WHERE ry.monarch_id = m.id
+        AND m.id = #{self.id}
+        ORDER BY start_on
       "
     )
   end
