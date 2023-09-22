@@ -255,7 +255,7 @@ task :generate_session_regnal_year_citations => :environment do
       unless has_following_regnal_years
         
         # ... we add the monarch to the citation.
-        citation += ' ' + regnal_year.monarch_abbreviation + ' '
+        citation += ' ' + regnal_year.monarch_abbreviation
         
       # Otherwise, if the regnal year does have following regnal years ...
       else
@@ -272,8 +272,20 @@ task :generate_session_regnal_year_citations => :environment do
           # If regnal years array extends past the next regnal year ...
           if regnal_years.size > loop_count + 1
             
-            # ... we separate the regnal year numbers with a comma.
-            citation += ',  '
+            # ... if the next but one regnal year has the same monarch ...
+            if regnal_years[loop_count + 1].monarch_abbreviation == regnal_year.monarch_abbreviation
+              
+              # ... we separate the regnal year numbers with a comma.
+              citation += ', '
+              
+              # Otherise, if the next but one regnal year does not have the same monarch ...
+            else
+              
+              # ... we separate the regnal year numbers with a comma.
+              citation += ' & '
+            end
+            
+          # Otherwise, if the next regnal year is the last regnal year ...
           else
             
             # ... we separate the regnal year numbers with an ampersand.
@@ -283,33 +295,7 @@ task :generate_session_regnal_year_citations => :environment do
       end
     end
     
-    # If the session overlaps a single regnal year ...
-    if regnal_years.size == 1
-      
-      # ... we get all the sessions for a regnal year and store so we only query once.
-      sessions = regnal_years[0].sessions
-      
-      # If the count of sessions for a regnal year is greater than one ...
-      if sessions.size > 1
-        
-        # We set the loop count to zero.
-        loop_count = 0
-      
-        # For each session overlapping a regnal year ...
-        sessions.each do |session_item|
-      
-          # ... we increment the loop count by one.
-          loop_count += 1
-        
-          # If the session is this session ...
-          if session_item == session
-          
-            # We append the session number to the citation.
-            citation += ' (Sess. ' + loop_count.to_s + ')'
-          end
-        end
-      end
-    end
+    puts citation if session.id == 71
     
     # We store the regnal years citation on the session.
     session.regnal_years_citation = citation
