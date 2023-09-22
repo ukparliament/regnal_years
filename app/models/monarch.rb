@@ -30,4 +30,12 @@ class Monarch < ApplicationRecord
       "
     )
   end
+  
+  def earliest_reign_start_on
+    Reign.all.where( "monarch_id = ?", self ).order( 'start_on' ).first.start_on
+  end
+  
+  def latest_reign_end_on
+    Reign.all.where( "monarch_id = ?", self ).order( 'end_on desc' ).first.end_on
+  end
 end
