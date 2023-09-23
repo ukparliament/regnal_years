@@ -250,7 +250,7 @@ task :generate_session_regnal_year_citations => :environment do
       has_following_regnal_years = ( loop_count != regnal_years.size )
       
       # We add the number of the regnal year to the citation.
-      citation += regnal_year.number.to_s
+      citation += ' ' + regnal_year.number.to_s
       
       # If the regnal year does not have any following regnal years.
       unless has_following_regnal_years
@@ -265,7 +265,7 @@ task :generate_session_regnal_year_citations => :environment do
         if regnal_years[loop_count].monarch_abbreviation != regnal_year.monarch_abbreviation
           
           # ... we add the monarch to the citation.
-          citation += ' ' + regnal_year.monarch_abbreviation + ' & '
+          citation += ' ' + regnal_year.monarch_abbreviation + ' &'
           
         # Otherwise, if the next regnal year has the same monarch as this regnal year ... 
         else
@@ -277,27 +277,27 @@ task :generate_session_regnal_year_citations => :environment do
             if regnal_years[loop_count + 1].monarch_abbreviation == regnal_year.monarch_abbreviation
               
               # ... we separate the regnal year numbers with a comma.
-              citation += ', '
+              citation += ','
               
               # Otherise, if the next but one regnal year does not have the same monarch ...
             else
               
               # ... we separate the regnal year numbers with a comma.
-              citation += ' & '
+              citation += ' &'
             end
             
           # Otherwise, if the next regnal year is the last regnal year ...
           else
             
             # ... we separate the regnal year numbers with an ampersand.
-            citation += ' &  '
+            citation += ' &'
           end
         end
       end
     end
     
-    # We store the regnal years citation on the session.
-    session.regnal_years_citation = citation
+    # We store the regnal years citation - stripped of any leading and trailing spaces - on the session.
+    session.regnal_years_citation = citation.strip
     session.save
   end
 end
