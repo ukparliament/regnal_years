@@ -8,7 +8,8 @@ task :setup => [
   :import_parliament_periods,
   :import_sessions,
   :generate_regnal_year_sessions,
-  :generate_session_regnal_year_citations
+  :generate_session_regnal_year_citations,
+  :generate_session_numbers_for_regnal_year_citations
 ]
 
 # ## A task to import kingdoms.
@@ -295,11 +296,54 @@ task :generate_session_regnal_year_citations => :environment do
       end
     end
     
-    puts citation if session.id == 71
-    
     # We store the regnal years citation on the session.
     session.regnal_years_citation = citation
     session.save
+  end
+end
+
+# ## A method to append session number disambiguation to session regnal year citations.
+task :generate_session_numbers_for_regnal_year_citations => :environment do
+  puts "generating session numbers for regnal year citations"
+  
+  # We get all duplicate regnal years citations from the session table.
+  duplicate_regnal_years_citations = Session.find_by_sql(
+    "
+      SELECT regnal_years_citation
+      FROM sessions
+      GROUP BY regnal_years_citation
+      HAVING count(id) > 1;
+    "
+  )
+  
+  # For each duplicate regnal years citation in the sessions table ...
+  duplicate_regnal_years_citations.each do |duplicate_regnal_years_citation|
+    
+    # ... we find the sessions with that regnal years citation.
+    sessions = Session.find_by_sql(
+      "
+        SELECT *
+        FROM sessions
+        WHERE regnal_years_citation = '#{duplicate_regnal_years_citation.regnal_years_citation}'
+        ORDER BY start_on
+      "
+    )
+    
+    # We set the count attribute to zero.
+    count = 0
+    
+    # For each session ...
+    sessions.each do |session|
+      
+      # ... we increment the count.
+      count += 1
+      
+      # We append the session count to the regnal years citation ...
+      session.regnal_years_citation += " (Sess. #{count})"
+      
+      # ... and save the session.
+      session.save
+    end
   end
 end
 
