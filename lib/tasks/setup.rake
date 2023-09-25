@@ -339,7 +339,7 @@ task :generate_session_numbers_for_regnal_year_citations => :environment do
       count += 1
       
       # We append the session count to the regnal years citation ...
-      session.regnal_years_citation += " (Sess. #{count})"
+      session.regnal_years_citation += " (sess. #{count})"
       
       # ... and save the session.
       session.save
