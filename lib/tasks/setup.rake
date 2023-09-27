@@ -82,82 +82,81 @@ task :generate_regnal_years => :environment do
       # ... if the start date of the reign(s) plus a year minus a day is greater than the end date of the reign(s) ...
       if earliest_reign_start_on + 1.year - 1.day > latest_reign_end_on
       
-          # ... we set the end date of the first regnal year to the end date of the reign(s).
+        # ... we set the end date of the first regnal year to the end date of the reign(s).
+        regnal_year_end_on = latest_reign_end_on
+      
+      # Otherwise, if the start date of the reign(s) plus a year minus a day is not greater than the end date of the reign(s) ...
+      else
+      
+        # ... we set the end date of the first regnal year to the start date of the reign(s) plus a year minus a day.
+        regnal_year_end_on = earliest_reign_start_on  + 1.year - 1.day
+      end
+      
+    # Otherwise, if the reign(s) have no end date ...
+    else
+      
+      # ... if the start date of the reign(s) plus a year minus a day is greater than today ...
+      if earliest_reign_start_on + 1.year - 1.day > Date.today
+      
+        # ... we set the end date of the first regnal year to nil.
+        regnal_year_end_on = nil
+      
+      # Otherwise, if the start date of the reign(s) plus a year minus a day is not greater than today ...
+      else
+      
+        # ... we set the end date of the first regnal year to the start date of the reign(s) plus a year minus a day.
+        regnal_year_end_on = earliest_reign_start_on + 1.year - 1.day
+      end
+    end
+    
+    # We create the first regnal year.
+    find_or_create_regnal_year( monarch, regnal_year_number, regnal_year_start_on, regnal_year_end_on )
+    
+    # Whilst the end date of the regnal year does not equal the end date of the reign(s) and whilst the end date of the regnal year is not nil ...
+    while regnal_year_end_on != latest_reign_end_on and regnal_year_end_on != nil
+      
+      # ... we increment the regnal year number.
+      regnal_year_number += 1
+      
+      # We increment the regnal year start date by one year.
+      regnal_year_start_on += 1.year
+      
+      # If the reign(s) have an end date ...
+      if latest_reign_end_on
+          
+        # ... if the start date of the regnal year plus a year minus a day is greater than the end date of the reign(s) ...
+        if regnal_year_start_on + 1.year - 1.day > latest_reign_end_on
+      
+          # ... we set the end date of the regnal year to the end date of the reign(s).
           regnal_year_end_on = latest_reign_end_on
       
-        # Otherwise, if the start date of the reign(s) plus a year minus a day is not greater than the end date of the reign(s) ...
+        # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than the end date of the reign(s) ...
         else
       
-          # ... we set the end date of the first regnal year to the start date of the reign(s) plus a year minus a day.
-          regnal_year_end_on = earliest_reign_start_on  + 1.year - 1.day
+          # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
+          regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
         end
       
       # Otherwise, if the reign(s) have no end date ...
       else
       
-        # ... if the start date of the reign(s) plus a year minus a day is greater than today ...
-        if earliest_reign_start_on + 1.year - 1.day > Date.today
+        # ... if the start date of the regnal year plus a year minus a day is greater than today ...
+        if regnal_year_start_on + 1.year - 1.day > Date.today
       
-          # ... we set the end date of the first regnal year to nil.
+          # ... we set the end date of the regnal year to nil.
           regnal_year_end_on = nil
       
-        # Otherwise, if the start date of the reign(s) plus a year minus a day is not greater than today ...
+        # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than today ...
         else
       
-          # ... we set the end date of the first regnal year to the start date of the reign(s) plus a year minus a day.
-          regnal_year_end_on = earliest_reign_start_on + 1.year - 1.day
+          # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
+          regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
         end
       end
-    
-      # We create the first regnal year.
+      
+      # We create the next regnal year.
       find_or_create_regnal_year( monarch, regnal_year_number, regnal_year_start_on, regnal_year_end_on )
-    
-      # Whilst the end date of the regnal year does not equal the end date of the reign(s) and whilst the end date of the regnal year is not nil ...
-      while regnal_year_end_on != latest_reign_end_on and regnal_year_end_on != nil
-      
-        # ... we increment the regnal year number.
-        regnal_year_number += 1
-      
-        # We increment the regnal year start date by one year.
-        regnal_year_start_on += 1.year
-      
-        # If the reign(s) have an end date ...
-        if latest_reign_end_on
-          
-          # ... if the start date of the regnal year plus a year minus a day is greater than the end date of the reign(s) ...
-          if regnal_year_start_on + 1.year - 1.day > latest_reign_end_on
-      
-            # ... we set the end date of the regnal year to the end date of the reign(s).
-            regnal_year_end_on = latest_reign_end_on
-      
-          # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than the end date of the reign(s) ...
-          else
-      
-            # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
-            regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
-          end
-      
-        # Otherwise, if the reign(s) have no end date ...
-        else
-      
-          # ... if the start date of the regnal year plus a year minus a day is greater than today ...
-          if regnal_year_start_on + 1.year - 1.day > Date.today
-      
-            # ... we set the end date of the regnal year to nil.
-            regnal_year_end_on = nil
-      
-          # Otherwise, if the start date of the regnal year plus a year minus a day is not greater than today ...
-          else
-      
-            # ... we set the end date of the regnal year to the start date of the regnal year plus a year minus a day.
-            regnal_year_end_on = regnal_year_start_on  + 1.year - 1.day
-          end
-        end
-      
-        # We create the next regnal year.
-        find_or_create_regnal_year( monarch, regnal_year_number, regnal_year_start_on, regnal_year_end_on )
-      end
-      #end
+    end
   end
 end
 
@@ -306,7 +305,7 @@ end
 task :generate_session_numbers_for_regnal_year_citations => :environment do
   puts "generating session numbers for regnal year citations"
   
-  # We get all duplicate regnal years citations from the session table.
+  # We get all duplicate regnal years citations from the sessions table.
   duplicate_regnal_years_citations = Session.find_by_sql(
     "
       SELECT regnal_years_citation
