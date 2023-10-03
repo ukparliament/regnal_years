@@ -59,6 +59,7 @@ create table sessions (
 	number int not null,
 	start_on date not null,
 	end_on date,
+	wikidata_id varchar(20),
 	calendar_years_citation varchar(50) not null,
 	regnal_years_citation varchar(50),
 	parliament_period_id int not null,
