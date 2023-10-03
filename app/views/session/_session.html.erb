@@ -9,4 +9,9 @@
 	<% end -%>
 	<%= content_tag( 'td', session.calendar_years_citation ) %>
 	<%= content_tag( 'td', session.regnal_years_citation ) %>
+	<% if session.wikidata_id -%>
+		<%= content_tag( 'td', link_to( session.wikidata_id, "https://www.wikidata.org/wiki/#{session.wikidata_id}" ) ) %>
+	<% else -%>
+		<%= content_tag( 'td', '-' ) %>
+	<% end %>
 </tr>

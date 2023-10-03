@@ -5,6 +5,9 @@
 <%= content_tag( 'p', "Parliament: #{link_to( @session.parliament_period_number.ordinalize, parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )}".html_safe ) %>
 <%= content_tag( 'p', "Citation by calendar years: #{@session.calendar_years_citation}" ) %>
 <%= content_tag( 'p', "Citation by regnal years: #{@session.regnal_years_citation}" ) %>
+<% if @session.wikidata_id -%>
+	<%= content_tag( 'p', "Wikidata ID: #{link_to( @session.wikidata_id, "https://www.wikidata.org/wiki/#{@session.wikidata_id}" ) }".html_safe ) %>
+<% end -%>
 
 
 <div id="regnal-years">
