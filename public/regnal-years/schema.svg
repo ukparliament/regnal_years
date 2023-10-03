@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="210 125 970.5 1264" width="970.5" height="1264">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="210 125 970.5 1264" width="970.5" height="1264">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="CrowBall_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -5 20 10" markerWidth="20" markerHeight="10" color="black">
       <g>
@@ -13,7 +13,7 @@
       </g>
     </marker>
   </defs>
-  <g id="Canvas_1" fill-opacity="1" fill="none" stroke-dasharray="none" stroke="none" stroke-opacity="1">
+  <g id="Canvas_1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none" fill-opacity="1">
     <title>Canvas 1</title>
     <rect fill="white" x="210" y="125" width="970.5" height="1264"/>
     <g id="Canvas_1_Layer_1">
@@ -72,23 +72,24 @@
         <title>Class with Attributes</title>
         <g id="Graphic_15">
           <title>Attributes</title>
-          <rect x="211" y="757" width="245.5" height="162" fill="white"/>
-          <rect x="211" y="757" width="245.5" height="162" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-          <text transform="translate(217 763)" fill="#515556">
+          <rect x="211" y="746" width="245.5" height="184" fill="white"/>
+          <rect x="211" y="746" width="245.5" height="184" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <text transform="translate(217 752)" fill="#515556">
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="13">id</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="35">number</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="57">start_on</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="79">end_on</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="101">calendar_years_citation</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="123">regnal_years_citation</tspan>
-            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="145">parliament_id</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="145">wikidata_id</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="167">parliament_id</tspan>
           </text>
         </g>
         <g id="Graphic_14">
           <title>Class Name</title>
-          <rect x="211" y="731" width="245.5" height="26" fill="white"/>
-          <rect x="211" y="731" width="245.5" height="26" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-          <text transform="translate(217 735)" fill="#515556">
+          <rect x="211" y="720" width="245.5" height="26" fill="white"/>
+          <rect x="211" y="720" width="245.5" height="26" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <text transform="translate(217 724)" fill="#515556">
             <tspan font-family="Avenir" font-weight="bold" font-size="13" fill="#515556" x="92.089" y="13">sessions</tspan>
           </text>
         </g>
@@ -143,7 +144,7 @@
         </g>
       </g>
       <g id="Line_25">
-        <line x1="333.75" y1="673.5" x2="333.75" y2="711.5" marker-end="url(#CrowBall_Marker)" marker-start="url(#DoubleBar_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="333.75" y1="673.5" x2="333.75" y2="700.5" marker-end="url(#CrowBall_Marker)" marker-start="url(#DoubleBar_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Group_26">
         <title>Class with Attributes</title>
