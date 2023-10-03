@@ -182,6 +182,7 @@ task :import_sessions => :environment do
     session.number = row[1]
     session.start_on = row[2]
     session.end_on = row[3]
+    session.wikidata_id = row[6]
     session.calendar_years_citation = row[4]
     session.parliament_period_id = row[0]
     session.save
