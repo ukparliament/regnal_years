@@ -50,7 +50,7 @@ create table parliament_periods (
 	number int not null,
 	start_on date not null,
 	end_on date,
-	wikidata_id varchar(20) not null,
+	wikidata_id varchar(20),
 	primary key (id)
 );
 
