@@ -212,7 +212,7 @@ task :generate_regnal_year_sessions => :environment do
         session_regnal_year = SessionRegnalYear.new
         session_regnal_year.session = session
         session_regnal_year.regnal_year = regnal_year
-        session_regnal_year.save
+        session_regnal_year.save!
       end
     end
   end
