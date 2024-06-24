@@ -208,11 +208,25 @@ task :generate_regnal_year_sessions => :environment do
       # ... if the session overlaps the regnal year ...
       if session.overlaps_regnal_year?( regnal_year )
         
-        # ... we create a new session regnal year.
-        session_regnal_year = SessionRegnalYear.new
-        session_regnal_year.session = session
-        session_regnal_year.regnal_year = regnal_year
-        session_regnal_year.save!
+        # ... we attempt to find the session regnal year.
+        session_regnal_year = SessionRegnalYear.find_by_sql(
+          "
+            SELECT *
+            FROM session_regnal_years
+            WHERE session_id = #{session.id}
+            AND regnal_year_id = #{regnal_year.id}
+          "
+        ).first
+        
+        # Unless we find the session regnal year ...
+        unless session_regnal_year
+          
+          # ... we create a new session regnal year.
+          session_regnal_year = SessionRegnalYear.new
+          session_regnal_year.session = session
+          session_regnal_year.regnal_year = regnal_year
+          session_regnal_year.save!
+        end
       end
     end
   end
@@ -352,13 +366,28 @@ end
 # ## A method to find or create a regnal year.
 def find_or_create_regnal_year( monarch, number, start_on, end_on )
   
-  # We attempt to find a regnal year for this monarch, with this number.
-  regnal_year = RegnalYear
-    .all
-    .where( "monarch_id = ?", monarch.id )
-    .where( "start_on = ?", start_on )
-    .where( "end_on = ?", end_on )
+  # If the regnal year has an end date ...
+  if end_on
+  
+    # ... we attempt to find a regnal year for this monarch, with this number and this start and end date.
+    regnal_year = RegnalYear
+      .all
+      .where( "monarch_id = ?", monarch.id )
+      .where( "start_on = ?", start_on )
+      .where( "end_on = ?", end_on )
     .first
+    
+  # Otherwise, if this regnal year has no end date ...
+  else
+  
+    # ... we attempt to find a regnal year for this monarch, with this number and this start date and no end date.
+    regnal_year = RegnalYear
+      .all
+      .where( "monarch_id = ?", monarch.id )
+      .where( "start_on = ?", start_on )
+      .where( "end_on IS NULL" )
+    .first
+  end
   
   # Unless we find the regnal year ...
   unless regnal_year
