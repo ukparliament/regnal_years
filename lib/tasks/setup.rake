@@ -366,31 +366,23 @@ end
 # ## A method to find or create a regnal year.
 def find_or_create_regnal_year( monarch, number, start_on, end_on )
   
-  # If the regnal year has an end date ...
-  if end_on
+  # We attempt to find a regnal year for this monarch, with this number and this start date.
+  regnal_year = RegnalYear
+    .all
+    .where( "monarch_id = ?", monarch.id )
+    .where( "number = ?", number )
+    .where( "start_on = ?", start_on )
+  .first
   
-    # ... we attempt to find a regnal year for this monarch, with this number and this start and end date.
-    regnal_year = RegnalYear
-      .all
-      .where( "monarch_id = ?", monarch.id )
-      .where( "start_on = ?", start_on )
-      .where( "end_on = ?", end_on )
-    .first
+  # If we find this regnal year ...
+  if regnal_year
     
-  # Otherwise, if this regnal year has no end date ...
+    # ... we set the regnal year end date if there is an end date.
+    regnal_year.end_on = end_on if end_on
+    regnal_year.save
+    
+  # Otherwise, if we don't find the regnal year ...
   else
-  
-    # ... we attempt to find a regnal year for this monarch, with this number and this start date and no end date.
-    regnal_year = RegnalYear
-      .all
-      .where( "monarch_id = ?", monarch.id )
-      .where( "start_on = ?", start_on )
-      .where( "end_on IS NULL" )
-    .first
-  end
-  
-  # Unless we find the regnal year ...
-  unless regnal_year
     
     # ... we create a new regnal year.
     regnal_year = RegnalYear.new
