@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: sessions
+#
+#  id                      :integer          not null, primary key
+#  calendar_years_citation :string(50)       not null
+#  end_on                  :date
+#  number                  :integer          not null
+#  regnal_years_citation   :string(50)
+#  start_on                :date             not null
+#  parliament_period_id    :integer          not null
+#  wikidata_id             :string(20)
+#
+# Foreign Keys
+#
+#  fk_parliament_period  (parliament_period_id => parliament_periods.id)
+#
 class Session < ApplicationRecord
   
   def display_dates

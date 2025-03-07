@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: regnal_years
+#
+#  id         :integer          not null, primary key
+#  end_on     :date
+#  number     :integer          not null
+#  start_on   :date             not null
+#  monarch_id :integer          not null
+#
+# Foreign Keys
+#
+#  fk_monarch  (monarch_id => monarchs.id)
+#
 class RegnalYear < ApplicationRecord
   
   belongs_to :monarch

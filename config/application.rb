@@ -48,6 +48,6 @@ module RegnalYears
     end
 
     # Dump schenma as SQL
-    # config.active_record.schema_format = :sql
+    config.active_record.schema_format = :sql
   end
 end

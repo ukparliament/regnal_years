@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: parliament_periods
+#
+#  id          :integer          not null, primary key
+#  end_on      :date
+#  number      :integer          not null
+#  start_on    :date             not null
+#  wikidata_id :string(20)
+#
 class ParliamentPeriod < ApplicationRecord
   
   def display_dates

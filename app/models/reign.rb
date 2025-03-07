@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: reigns
+#
+#  id         :integer          not null, primary key
+#  end_on     :date
+#  start_on   :date             not null
+#  kingdom_id :integer          not null
+#  monarch_id :integer          not null
+#
+# Foreign Keys
+#
+#  fk_kingdom  (kingdom_id => kingdoms.id)
+#  fk_monarch  (monarch_id => monarchs.id)
+#
 class Reign < ApplicationRecord
   
   belongs_to :monarch
