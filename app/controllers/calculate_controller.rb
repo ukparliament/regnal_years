@@ -34,31 +34,31 @@ class CalculateController < ApplicationController
     unless @error_message
       
       # We attempt to find the session this date is in if the session has an end date.
-      @session = Session.find_by_sql(
+      @session = Session.find_by_sql([
         "
           SELECT s.*, pp.number AS parliament_period_number
           FROM sessions s, parliament_periods pp
           WHERE s.parliament_period_id = pp.id
-          AND s.start_on <= '#{@date}'
-          AND s.end_on >= '#{@date}'
+          AND s.start_on <= ?
+          AND s.end_on >= ?
           ORDER BY start_on
-        "
-      ).first
+        ", date, date
+      ]).first
       
       # Unless we find the session ...
       unless @session
         
         # ... we attempt to find the session this date is in if the session has no end date.
-        @session = Session.find_by_sql(
+        @session = Session.find_by_sql([
           "
             SELECT s.*, pp.number AS parliament_period_number
             FROM sessions s, parliament_periods pp
             WHERE s.parliament_period_id = pp.id
-            AND s.start_on <= '#{@date}'
+            AND s.start_on <= ?
             AND s.end_on IS NULL
             ORDER BY start_on
-          "
-        ).first
+          ", date
+        ]).first
       end
       
       # Unless we find the session ...s

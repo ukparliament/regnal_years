@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: monarchs
+#
+#  id            :integer          not null, primary key
+#  abbreviation  :string(20)       not null
+#  date_of_birth :date             not null
+#  date_of_death :date
+#  title         :string(255)      not null
+#  wikidata_id   :string(20)       not null
+#
 class Monarch < ApplicationRecord
   
   def display_dates

@@ -1,10 +1,14 @@
-development:
+development: &development
   adapter: postgresql
   encoding: unicode
   database: regnal_years
   host: localhost
   pool: 5
-  
+
+test:
+  <<: *development
+  database: regnal_years_test
+
 production:
   host: <%= ENV['DB_HOST'] %>
   port: 5432

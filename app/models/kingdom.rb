@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: kingdoms
+#
+#  id       :integer          not null, primary key
+#  end_on   :date
+#  name     :string(255)      not null
+#  start_on :date
+#
 class Kingdom < ApplicationRecord
   
   def display_dates
