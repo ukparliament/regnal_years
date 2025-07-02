@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   
   get 'regnal-years/meta' => 'meta#index', as: :meta_list
   get 'regnal-years/meta/schema' => 'meta#schema', as: :meta_schema
+  get 'regnal-years/meta/cookies' => 'meta#cookies', as: :meta_cookies
 end

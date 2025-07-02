@@ -1,7 +1,6 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -355,18 +354,18 @@ ALTER TABLE ONLY public.reigns
 
 
 --
--- Name: reigns fk_monarch; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reigns
-    ADD CONSTRAINT fk_monarch FOREIGN KEY (monarch_id) REFERENCES public.monarchs(id);
-
-
---
 -- Name: regnal_years fk_monarch; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.regnal_years
+    ADD CONSTRAINT fk_monarch FOREIGN KEY (monarch_id) REFERENCES public.monarchs(id);
+
+
+--
+-- Name: reigns fk_monarch; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.reigns
     ADD CONSTRAINT fk_monarch FOREIGN KEY (monarch_id) REFERENCES public.monarchs(id);
 
 
