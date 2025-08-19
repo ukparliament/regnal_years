@@ -9,6 +9,10 @@ class RegnalYearController < ApplicationController
         ORDER BY start_on
       "
     )
+    @page_title = 'Regnal years'
+    @description = 'Regnal years.'
+    @crumb << { label: @page_title, url: nil }
+    @section = 'regnal-years'
   end
   
   def show
@@ -22,10 +26,14 @@ class RegnalYearController < ApplicationController
         ORDER BY start_on
       ", regnal_year
     ]).first
-
-    @page_title = @regnal_year.display_label
     @sessions = @regnal_year.sessions
     @previous_regnal_year = @regnal_year.previous
     @next_regnal_year = @regnal_year.next
+    
+    @page_title = @regnal_year.display_label
+    @description = "#{@regnal_year.display_label}."
+    @crumb << { label: 'Regnal years', url: regnal_year_list_url }
+    @crumb << { label: @page_title, url: nil }
+    @section = 'regnal-years'
   end
 end
