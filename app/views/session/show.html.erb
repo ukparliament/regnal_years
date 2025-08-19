@@ -12,10 +12,12 @@
 
 <div id="regnal-years">
 	<%= content_tag( 'h2', 'Regnal years' ) %>
-	<table>
-		<%= render :partial => 'regnal_year/regnal_year_table_header' %>
-		<tbody>
-			<%= render :partial => 'regnal_year/regnal_year', :collection => @regnal_years %>
-		</tbody>
-	</table>
+	<div class="overflow-auto">
+		<table class="table">
+			<%= render :partial => 'regnal_year/regnal_year_table_header' %>
+			<tbody>
+				<%= render :partial => 'regnal_year/regnal_year', :collection => @regnal_years %>
+			</tbody>
+		</table>
+	</div>
 </div>
