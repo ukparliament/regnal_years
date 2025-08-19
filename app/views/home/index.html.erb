@@ -1,24 +1,11 @@
-<form action="/regnal-years/calculate" method="GET" id="calculator">
-		<p><label for="date">Choose a date to calculate its session citations:</label></p>
-		<p>
-		<input type="date" name="date" id="date" required></p>
-		<p>
-	<button type="submit" id="calculate">Calculate</button></p>
+<form action="/regnal-years/calculate" method="GET" id="calculator" class="p-3 my-3 border rounded">
+	<fieldset class="p-form__fieldset p-3 my-3 border rounded">
+	  	<legend class="p-form__fieldset-legend">Choose a date to calculate its session citations</legend>
+		<input type="date" id="date" name="date" required />
+	</fieldset>
+	<button type="submit" class="btn btn-primary" id="calculate">Calculate</button>
 </form>
-
 
 <%= content_tag( 'p', "Regnal years were used to cite parliamentary sessions - and Acts gaining Royal Assent in those sessions - until the latter half of the 20th century." ) %>
 
 <%= content_tag( 'p', "The citation of Acts switched from the regnal year of the session to calendar years in 1963, following the passage of the #{link_to( 'Acts of Parliament Numbering and Citation Act 1962', 'https://www.legislation.gov.uk/ukpga/Eliz2/10-11/34' )}. Use of regnal years continued intermittently beyond 1963; for example, the House of Commons Journal for 1970-71 is described as \"1970-71: 19 & 20 Eliz. II\".".html_safe ) %>
-
-
-
-
-
-
-
-
-
-
-
-
