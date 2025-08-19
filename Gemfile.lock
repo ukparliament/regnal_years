@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/ukparliament/design-assets.git
+  revision: 5a82b76fb149f1cdc62b15d98d9e4416e6b2afe9
+  tag: 0.2.7
+  glob: library_design/*.gemspec
+  specs:
+    library_design (0.2.7)
+      rack-cors (~> 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,6 +159,10 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
+    propshaft (1.2.1)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
     psych (5.2.6)
       date
       stringio
@@ -158,6 +171,9 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.0)
+    rack-cors (3.0.0)
+      logger
+      rack (>= 3.0.14)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -219,7 +235,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.4)
+    rspec-support (3.13.5)
     rubyzip (3.0.1)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
@@ -262,7 +278,9 @@ DEPENDENCIES
   csv
   debug
   irb
+  library_design!
   pg
+  propshaft
   puma
   rails (~> 8.0.2)
   rollbar

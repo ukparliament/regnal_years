@@ -14,6 +14,12 @@ gem 'csv'
 # Allows for independent upgrades
 gem 'irb'
 
+# Modern asset management
+gem "propshaft"
+
+# For local development
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.2.7"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 

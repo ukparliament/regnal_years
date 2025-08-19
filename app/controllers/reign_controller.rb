@@ -2,7 +2,6 @@ class ReignController < ApplicationController
   
   def index
     @page_title = 'Reigns'
-    @reigns = Reign.all.order( 'start_on' )
     
     @reigns = Reign.find_by_sql( 
       "
@@ -13,6 +12,11 @@ class ReignController < ApplicationController
         ORDER BY r.start_on
       "
     )
+    
+    @page_title = 'Reigns'
+    @description = 'Reigns.'
+    @crumb << { label: @page_title, url: nil }
+    @section = 'reigns'
   end
   
   def show
@@ -29,5 +33,9 @@ class ReignController < ApplicationController
     ]).first
 
     @page_title = @reign.display_title
+    @description = "#{@reign.display_title}."
+    @crumb << { label: 'Reigns', url: reign_list_url }
+    @crumb << { label: @page_title, url: nil }
+    @section = 'reigns'
   end
 end

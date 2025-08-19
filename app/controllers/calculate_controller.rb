@@ -83,6 +83,8 @@ class CalculateController < ApplicationController
       
       # ... we set the page title.
       @page_title = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
+      @description = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}."
+      @crumb << { label: @date.strftime( $DATE_DISPLAY_FORMAT ), url: nil }
     end
   end
 end
