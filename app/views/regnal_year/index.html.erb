@@ -1,6 +1,8 @@
-<table>
-	<%= render :partial => 'regnal_year_table_header' %>
-	<tbody>
-		<%= render :partial => 'regnal_year', :collection => @regnal_years %>
-	</tbody>
-</table>
+<div class="overflow-auto">
+	<table class="table">
+		<%= render :partial => 'regnal_year_table_header' %>
+		<tbody>
+			<%= render :partial => 'regnal_year', :collection => @regnal_years %>
+		</tbody>
+	</table>
+</div>

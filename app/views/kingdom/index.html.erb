@@ -1,12 +1,14 @@
-<table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'Name' ) %>
-			<%= content_tag( 'td', 'Start date' ) %>
-			<%= content_tag( 'td', 'End date' ) %>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render :partial => 'kingdom', :collection => @kingdoms %>
-	</tbody>
-</table>
+<div class="overflow-auto">
+	<table class="table">
+		<thead>
+			<tr>
+				<%= content_tag( 'td', 'Name' ) %>
+				<%= content_tag( 'td', 'Start date' ) %>
+				<%= content_tag( 'td', 'End date' ) %>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render :partial => 'kingdom', :collection => @kingdoms %>
+		</tbody>
+	</table>
+</div>

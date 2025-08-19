@@ -1,6 +1,8 @@
-<table>
-	<%= render :partial => 'reign_table_header' %>
-	<tbody>
-		<%= render :partial => 'reign', :collection => @reigns %>
-	</tbody>
-</table>
+<div class="overflow-auto">
+	<table class="table">
+		<%= render :partial => 'reign_table_header' %>
+		<tbody>
+			<%= render :partial => 'reign', :collection => @reigns %>
+		</tbody>
+	</table>
+</div>

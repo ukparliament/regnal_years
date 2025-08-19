@@ -2,10 +2,12 @@
 
 <div id="reigns">
 	<%= content_tag( 'h2', 'Reigns' ) %>
-	<table>
-		<%= render :partial => 'reign/reign_table_header' %>
-		<tbody>
-			<%= render :partial => 'reign/reign', :collection => @kingdom.reigns %>
-		</tbody>
-	</table>
+	<div class="overflow-auto">
+		<table class="table">
+			<%= render :partial => 'reign/reign_table_header' %>
+			<tbody>
+				<%= render :partial => 'reign/reign', :collection => @kingdom.reigns %>
+			</tbody>
+		</table>
+	</div>
 </div>

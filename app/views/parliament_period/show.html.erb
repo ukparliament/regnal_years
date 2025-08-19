@@ -5,18 +5,20 @@
 
 <div id="sessions">
 	<%= content_tag( 'h2', 'Sessions' ) %>
-	<table class="table">
-		<thead>
-			<tr>
-				<%= content_tag( 'td', 'Session' ) %>
-				<%= content_tag( 'td', 'Start date' ) %>
-				<%= content_tag( 'td', 'End date' ) %>
-				<%= content_tag( 'td', 'Citation by calendar years' ) %>
-				<%= content_tag( 'td', 'Citation by regnal years' ) %>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render :partial => 'session/session_without_parliament_period', :collection => @sessions %>
-		</tbody>
-	</table>
+	<div class="overflow-auto">
+		<table class="table">
+			<thead>
+				<tr>
+					<%= content_tag( 'td', 'Session' ) %>
+					<%= content_tag( 'td', 'Start date' ) %>
+					<%= content_tag( 'td', 'End date' ) %>
+					<%= content_tag( 'td', 'Citation by calendar years' ) %>
+					<%= content_tag( 'td', 'Citation by regnal years' ) %>
+				</tr>
+			</thead>
+			<tbody>
+				<%= render :partial => 'session/session_without_parliament_period', :collection => @sessions %>
+			</tbody>
+		</table>
+	</div>
 </div>
