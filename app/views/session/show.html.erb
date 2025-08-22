@@ -1,14 +1,29 @@
-<%= render :partial => 'previous_next' %>
-
 <%= content_tag( 'p', @session.display_dates ) %>
 
-<%= content_tag( 'p', "Parliament: #{link_to( @session.parliament_period_number.ordinalize, parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )}".html_safe ) %>
-<%= content_tag( 'p', "Citation by calendar years: #{@session.calendar_years_citation}" ) %>
-<%= content_tag( 'p', "Citation by regnal years: #{@session.regnal_years_citation}" ) %>
-<% if @session.wikidata_id -%>
-	<%= content_tag( 'p', "Wikidata ID: #{link_to( @session.wikidata_id, "https://www.wikidata.org/wiki/#{@session.wikidata_id}" ) }".html_safe ) %>
-<% end -%>
+<%= previous_next( 'session', @previous_url, @next_url ) %>
 
+<table class="table key-value">
+	<tbody>
+		<tr>
+			<%= content_tag( 'td', 'Parliament' ) %>
+			<%= content_tag( 'td', link_to( @session.parliament_period_number.ordinalize, parliament_period_show_url( :parliament_period => @session.parliament_period_id ) ) ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'td', 'Citation by calendar years' ) %>
+			<%= content_tag( 'td', @session.calendar_years_citation ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'td', 'Citation by regnal years' ) %>
+			<%= content_tag( 'td', @session.regnal_years_citation ) %>
+		</tr>
+		<% if @session.wikidata_id -%>
+			<tr>
+				<%= content_tag( 'td', 'Wikidata ID' ) %>
+				<%= content_tag( 'td', link_to( @session.wikidata_id, "https://www.wikidata.org/wiki/#{@session.wikidata_id}" ) ) %>
+			</tr>
+		<% end -%>
+	</tbody>
+</table>
 
 <div id="regnal-years">
 	<%= content_tag( 'h2', 'Regnal years' ) %>
