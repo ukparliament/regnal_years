@@ -1,4 +1,0 @@
-<ul>
-	<%= content_tag( 'li', link_to( 'Previous session', session_show_url( :session => @previous_session ) ) ) if @previous_session %>
-	<%= content_tag( 'li', link_to( 'Next session', session_show_url( :session => @next_session ) ) ) if @next_session %>
-</ul>

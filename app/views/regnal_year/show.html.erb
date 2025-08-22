@@ -1,6 +1,6 @@
-<%= render :partial => 'previous_next' %>
-
 <%= content_tag( 'p', @regnal_year.display_dates ) %>
+
+<%= previous_next( 'regnal year', @previous_url, @next_url ) %>
 
 <%= content_tag( 'p', "A regnal year for #{link_to( @regnal_year.monarch_title, monarch_show_url( :monarch => @regnal_year.monarch_id ) )}.".html_safe ) %>
 

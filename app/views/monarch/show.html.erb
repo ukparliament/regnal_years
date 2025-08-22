@@ -1,5 +1,11 @@
 <%= content_tag( 'p', @monarch.display_dates ) %>
-<%= content_tag( 'p', "Wikidata ID: #{link_to( @monarch.wikidata_id, "https://www.wikidata.org/wiki/#{@monarch.wikidata_id}" )}".html_safe ) %>
+
+<table class="table key-value">
+	<tbody>
+		<%= content_tag( 'td', 'Wikidata ID' ) %>
+		<%= content_tag( 'td', link_to( @monarch.wikidata_id, "https://www.wikidata.org/wiki/#{@monarch.wikidata_id}" ) ) %>
+	</tbody>
+</table>
 
 <div id="reigns">
 	<%= content_tag( 'h2', 'Reigns' ) %>

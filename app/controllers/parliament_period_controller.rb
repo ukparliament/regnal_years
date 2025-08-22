@@ -21,5 +21,7 @@ class ParliamentPeriodController < ApplicationController
     @crumb << { label: 'Parliament periods', url: parliament_period_list_url }
     @crumb << { label: @parliament_period.number.ordinalize, url: nil }
     @section = 'parliaments'
+    @previous_url = parliament_period_show_url( :parliament_period => @previous_parliament_period ) if @previous_parliament_period
+    @next_url = parliament_period_show_url( :parliament_period => @next_parliament_period ) if @next_parliament_period
   end
 end

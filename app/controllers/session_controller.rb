@@ -36,5 +36,7 @@ class SessionController < ApplicationController
     @crumb << { label: 'Sessions', url: session_list_url }
     @crumb << { label: "#{@session.number.ordinalize} session of the #{@session.parliament_period_number.ordinalize} Parliament", url: nil }
     @section = 'sessions'
+    @previous_url = session_show_url( :session => @previous_session ) if @previous_session
+    @next_url = session_show_url( :session => @next_session ) if @next_session
   end
 end

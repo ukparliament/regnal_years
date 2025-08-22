@@ -35,5 +35,7 @@ class RegnalYearController < ApplicationController
     @crumb << { label: 'Regnal years', url: regnal_year_list_url }
     @crumb << { label: @page_title, url: nil }
     @section = 'regnal-years'
+    @previous_url = regnal_year_show_url( :regnal_year => @previous_regnal_year ) if @previous_regnal_year
+    @next_url = regnal_year_show_url( :regnal_year => @next_regnal_year ) if @next_regnal_year
   end
 end
