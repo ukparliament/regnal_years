@@ -1,15 +1,16 @@
 <%= content_tag( 'p', @reign.display_dates ) %>
 
-
-<table class="table key-value">
-	<tbody>
-		<tr>
-			<%= content_tag( 'td', 'Monarch' ) %>
-			<%= content_tag( 'td', link_to( @reign.monarch_title, monarch_show_url( :monarch => @reign.monarch_id ) ) ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Kingdom' ) %>
-			<%= content_tag( 'td', link_to( link_to( @reign.kingdom_name, kingdom_show_url( :kingdom => @reign.kingdom_id ) ) ) ) %>
-		</tr>
-	</tbody>
-</table>
+<div class="overflow-auto">
+	<table class="table key-value">
+		<tbody>
+			<tr>
+				<%= content_tag( 'td', 'Monarch' ) %>
+				<%= content_tag( 'td', link_to( @reign.monarch_title, monarch_show_url( :monarch => @reign.monarch_id ) ) ) %>
+			</tr>
+			<tr>
+				<%= content_tag( 'td', 'Kingdom' ) %>
+				<%= content_tag( 'td', link_to( link_to( @reign.kingdom_name, kingdom_show_url( :kingdom => @reign.kingdom_id ) ) ) ) %>
+			</tr>
+		</tbody>
+	</table>
+</div>
