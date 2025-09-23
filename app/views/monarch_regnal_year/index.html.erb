@@ -1,0 +1,10 @@
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<div class="overflow-auto margin-top-10">
+	<table class="table">
+		<%= render :partial => 'regnal_year/regnal_year_table_header' %>
+		<tbody>
+			<%= render :partial => 'regnal_year/regnal_year', :collection => @regnal_years %>
+		</tbody>
+	</table>
+</div>
