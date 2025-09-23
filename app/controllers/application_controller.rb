@@ -5,4 +5,6 @@ class ApplicationController < ActionController::Base
   $SITE_TITLE = 'UK Parliament Session Citations'
   
   $DATE_DISPLAY_FORMAT = '%-d %B %Y'
+  
+  $TOGGLE_PORTCULLIS = ENV.fetch( "TOGGLE_PORTCULLIS", 'off' )
 end
