@@ -12,6 +12,7 @@ class SessionController < ApplicationController
     
     @page_title = 'Sessions'
     @description = 'Sessions of the UK Parliament.'
+    @csv_url = session_list_url( :format => 'csv' )
     @crumb << { label: @page_title, url: nil }
     @section = 'sessions'
   end
