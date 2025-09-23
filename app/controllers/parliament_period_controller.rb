@@ -5,6 +5,7 @@ class ParliamentPeriodController < ApplicationController
     
     @page_title = 'Parliament periods'
     @description = 'UK Parliament periods.'
+    @csv_url = parliament_period_list_url( :format => 'csv' )
     @crumb << { label: @page_title, url: nil }
     @section = 'parliaments'
   end
