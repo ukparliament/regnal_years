@@ -11,6 +11,7 @@ class RegnalYearController < ApplicationController
     )
     @page_title = 'Regnal years'
     @description = 'Regnal years.'
+    @csv_url = regnal_year_list_url( :format => 'csv' )
     @crumb << { label: @page_title, url: nil }
     @section = 'regnal-years'
   end
