@@ -1,0 +1,1 @@
+<%= session.number %>,<%= session.start_on.strftime( '%Y-%m-%d' ) %>,<%= session.end_on.strftime( '%Y-%m-%d' ) if session.end_on %>,<%= session.calendar_years_citation %>,"<%= session.regnal_years_citation.html_safe %>",<%= session.wikidata_id if session.wikidata_id %>

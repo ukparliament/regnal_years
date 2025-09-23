@@ -9,11 +9,15 @@
 
 <div id="reigns">
 	<%= content_tag( 'h2', 'Reigns' ) %>
-	<div class="overflow-auto">
+	
+	<% @csv_url = monarch_reign_list_url( :format => 'csv' ) -%>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
+	<div class="overflow-auto margin-top-10">
 		<table class="table">
 			<%= render :partial => 'reign/reign_table_header' %>
 			<tbody>
-				<%= render :partial => 'reign/reign', :collection => @monarch.reigns %>
+				<%= render :partial => 'reign/reign', :collection => @reigns %>
 			</tbody>
 		</table>
 	</div>
@@ -21,11 +25,15 @@
 
 <div id="regnal-years">
 	<%= content_tag( 'h2', 'Regnal years' ) %>
-	<div class="overflow-auto">
+	
+	<% @csv_url = monarch_regnal_year_list_url( :format => 'csv' ) -%>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
+	<div class="overflow-auto margin-top-10">
 		<table class="table">
 			<%= render :partial => 'regnal_year/regnal_year_table_header' %>
 			<tbody>
-				<%= render :partial => 'regnal_year/regnal_year', :collection => @monarch.regnal_years %>
+				<%= render :partial => 'regnal_year/regnal_year', :collection => @regnal_years %>
 			</tbody>
 		</table>
 	</div>

@@ -13,11 +13,17 @@ Rails.application.routes.draw do
   get 'regnal-years/parliament-periods' => 'parliament_period#index', as: :parliament_period_list
   get 'regnal-years/parliament-periods/:parliament_period' => 'parliament_period#show', as: :parliament_period_show
   
+  get 'regnal-years/parliament-periods/:parliament_period/sessions' => 'parliament_period_session#index', as: :parliament_period_session_list
+  
   get 'regnal-years/sessions' => 'session#index', as: :session_list
   get 'regnal-years/sessions/:session' => 'session#show', as: :session_show
   
+  get 'regnal-years/sessions/:session/regnal-years' => 'session_regnal_year#index', as: :session_regnal_year_list
+  
   get 'regnal-years/regnal-years' => 'regnal_year#index', as: :regnal_year_list
   get 'regnal-years/regnal-years/:regnal_year' => 'regnal_year#show', as: :regnal_year_show
+  
+  get 'regnal-years/regnal-years/:regnal_year/sessions' => 'regnal_year_session#index', as: :regnal_year_session_list
   
   get 'regnal-years/reigns' => 'reign#index', as: :reign_list
   get 'regnal-years/reigns/:reign' => 'reign#show', as: :reign_show
@@ -25,8 +31,14 @@ Rails.application.routes.draw do
   get 'regnal-years/monarchs' => 'monarch#index', as: :monarch_list
   get 'regnal-years/monarchs/:monarch' => 'monarch#show', as: :monarch_show
   
+  get 'regnal-years/monarchs/:monarch/reigns' => 'monarch_reign#index', as: :monarch_reign_list
+  
+  get 'regnal-years/monarchs/:monarch/regnal-years' => 'monarch_regnal_year#index', as: :monarch_regnal_year_list
+  
   get 'regnal-years/kingdoms' => 'kingdom#index', as: :kingdom_list
   get 'regnal-years/kingdoms/:kingdom' => 'kingdom#show', as: :kingdom_show
+  
+  get 'regnal-years/kingdoms/:kingdom/reigns' => 'kingdom_reign#index', as: :kingdom_reign_list
   
   get 'regnal-years/meta' => 'meta#index', as: :meta_list
   get 'regnal-years/meta/schema' => 'meta#schema', as: :meta_schema

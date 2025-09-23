@@ -7,7 +7,7 @@
 	<body class="section-<%= @section %> subsection-<%= @subsection %> brand-bicameral">
 		<%= render :partial => 'layouts/header/header' %>
 		<main class="container block block-page" id="main-content">
-			<h1><%= @page_title || $SITE_TITLE %></h1>
+			<h1><%= @multiline_page_title || @page_title || $SITE_TITLE %></h1>
 			<%= yield %>
 		</main>
 		<%= render 'library_design/footer' %>

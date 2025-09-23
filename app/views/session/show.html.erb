@@ -27,7 +27,11 @@
 
 <div id="regnal-years">
 	<%= content_tag( 'h2', 'Regnal years' ) %>
-	<div class="overflow-auto">
+	
+	<% @csv_url = session_regnal_year_list_url( :format => 'csv' ) -%>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
+	<div class="overflow-auto margin-top-10">
 		<table class="table">
 			<%= render :partial => 'regnal_year/regnal_year_table_header' %>
 			<tbody>

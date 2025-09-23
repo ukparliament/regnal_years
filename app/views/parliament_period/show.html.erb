@@ -13,17 +13,13 @@
 
 <div id="sessions">
 	<%= content_tag( 'h2', 'Sessions' ) %>
-	<div class="overflow-auto">
+	
+	<% @csv_url = parliament_period_session_list_url( :format => 'csv' ) -%>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
+	<div class="overflow-auto margin-top-10">
 		<table class="table">
-			<thead>
-				<tr>
-					<%= content_tag( 'td', 'Session' ) %>
-					<%= content_tag( 'td', 'Start date' ) %>
-					<%= content_tag( 'td', 'End date' ) %>
-					<%= content_tag( 'td', 'Citation by calendar years' ) %>
-					<%= content_tag( 'td', 'Citation by regnal years' ) %>
-				</tr>
-			</thead>
+			<%= render :partial => 'session_table_head' %>
 			<tbody>
 				<%= render :partial => 'session/session_without_parliament_period', :collection => @sessions %>
 			</tbody>
