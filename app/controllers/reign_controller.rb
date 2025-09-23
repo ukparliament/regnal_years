@@ -15,6 +15,7 @@ class ReignController < ApplicationController
     
     @page_title = 'Reigns'
     @description = 'Reigns.'
+    @csv_url = reign_list_url( :format => 'csv' )
     @crumb << { label: @page_title, url: nil }
     @section = 'reigns'
   end
