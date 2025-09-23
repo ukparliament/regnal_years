@@ -7,11 +7,17 @@
 <% unless @sessions.empty? -%>
 	<div id="session">
 		<%= content_tag( 'h2', 'Sessions' ) %>
-		<table>
-			<%= render :partial => 'session/session_table_head' %>
-			<tbody>
-				<%= render :partial => 'session/session', :collection => @sessions %>
-			</tbody>
-		</table>
+		<div class="overflow-auto margin-top-10">
+		
+			<% @csv_url = regnal_year_session_list_url( :format => 'csv' ) -%>
+			<%= render :partial => 'library_design/feeds/feeds' %>
+			
+			<table class="table margin-top-10">
+				<%= render :partial => 'session/session_table_head' %>
+				<tbody>
+					<%= render :partial => 'session/session', :collection => @sessions %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 <% end -%>
