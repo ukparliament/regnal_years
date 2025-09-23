@@ -1,4 +1,6 @@
-<table class="table key-value">
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<table class="table key-value margin-top-10">
 	<tr>
 		<%= content_tag( 'td', 'Citation by regnal years:' ) %>
 		<%= content_tag( 'td', @session.regnal_years_citation ) %>
@@ -8,6 +10,5 @@
 		<%= content_tag( 'td', @session.calendar_years_citation ) %>
 	</tr>
 </table>
-
 
 <%= content_tag( 'p', "#{@date.strftime( $DATE_DISPLAY_FORMAT )} fell during the #{link_to( "#{@session.number.ordinalize} session", session_show_url( :session => @session ) )} of the #{link_to( "#{@session.parliament_period_number.ordinalize} Parliament", parliament_period_show_url( :parliament_period => @session.parliament_period_id ) )} of the United Kingdom.".html_safe ) %>

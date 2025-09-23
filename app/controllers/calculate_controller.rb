@@ -80,11 +80,29 @@ class CalculateController < ApplicationController
       
     # Otherwise, if we've not raised an error ...
     else
-      
+    
       # ... we set the page title.
       @page_title = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}"
-      @description = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}."
-      @crumb << { label: @date.strftime( $DATE_DISPLAY_FORMAT ), url: nil }
+    
+      # We check the format requested.
+      respond_to do |format|
+        
+        # If the format requested was HTML ...
+        format.html {
+        
+          # ... we set the page metadata.
+          @description = "Session citations for #{@date.strftime( $DATE_DISPLAY_FORMAT )}."
+          @csv_url = calculate_url( :date => @date, :format => 'csv' )
+          @crumb << { label: @date.strftime( $DATE_DISPLAY_FORMAT ), url: nil }
+        }
+        
+        # If the format requested was CSV ...
+        format.csv  {
+          
+          # ... we set the response header with a title.
+          response.headers['Content-Disposition'] = "attachment; filename=\"#{@page_title.downcase.gsub( ' ', '-' )}.csv\""
+        }
+      end
     end
   end
 end
