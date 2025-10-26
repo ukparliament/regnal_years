@@ -11,21 +11,11 @@
  
  
 /* Main navigation active states */
-body.section-parliaments nav#header-nav a.parliaments {
-	border-bottom-color: #fff;
-}
-body.section-sessions nav#header-nav a.sessions {
-	border-bottom-color: #fff;
-}
-body.section-regnal-years nav#header-nav a.regnal-years {
-	border-bottom-color: #fff;
-}
-body.section-reigns nav#header-nav a.reigns {
-	border-bottom-color: #fff;
-}
-body.section-monarchs nav#header-nav a.monarchs {
-	border-bottom-color: #fff;
-}
+body.section-parliaments nav#header-nav a.parliaments,
+body.section-sessions nav#header-nav a.sessions,
+body.section-regnal-years nav#header-nav a.regnal-years,
+body.section-reigns nav#header-nav a.reigns,
+body.section-monarchs nav#header-nav a.monarchs,
 body.section-kingdoms nav#header-nav a.kingdoms {
 	border-bottom-color: #fff;
 }

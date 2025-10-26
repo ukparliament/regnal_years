@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: e44844d1fa7d356cb86c27f03fe75cda40badf87
-  tag: 0.3.1
+  revision: f7ccbd1f83615e5ce64002ff9964dc9a08a8b2a2
+  tag: 0.5.0
   glob: library_design/*.gemspec
   specs:
-    library_design (0.2.17)
+    library_design (0.5.0)
       rack-cors (~> 3.0.0)
 
 GEM
@@ -125,11 +125,13 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    json (2.15.2)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -223,7 +225,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.4)
     rollbar (3.6.2)
-    rspec-core (3.13.5)
+    rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -240,9 +242,9 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.6)
-    rubyzip (3.2.0)
+    rubyzip (3.2.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.37.0)
+    selenium-webdriver (4.38.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -295,7 +297,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.4.6p54
+   ruby 3.4.7p58
 
 BUNDLED WITH
    2.7.2
