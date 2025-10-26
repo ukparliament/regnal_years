@@ -1,8 +1,8 @@
 class MetaController < ApplicationController
   
   def index
-    @page_title = 'About this application'
-    @description = 'About this application.'
+    @page_title = 'About this website'
+    @description = 'About this website.'
     @crumb << { label: @page_title, url: nil }
   end
   
