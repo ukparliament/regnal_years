@@ -38,5 +38,6 @@ class RegnalYearController < ApplicationController
     @section = 'regnal-years'
     @previous_url = regnal_year_show_url( :regnal_year => @previous_regnal_year ) if @previous_regnal_year
     @next_url = regnal_year_show_url( :regnal_year => @next_regnal_year ) if @next_regnal_year
+    @csv_url = regnal_year_session_list_url( :format => 'csv' )
   end
 end

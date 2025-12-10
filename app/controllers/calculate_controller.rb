@@ -74,6 +74,7 @@ class CalculateController < ApplicationController
     
       # ... we set the page title to error ...
       @page_title = "Unable to calculate a session citation"
+      @description = "Unable to calculate a session citation."
     
       # ... and render the error template.
       render( :template => 'calculate/error' )

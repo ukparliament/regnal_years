@@ -24,5 +24,6 @@ class ParliamentPeriodController < ApplicationController
     @section = 'parliaments'
     @previous_url = parliament_period_show_url( :parliament_period => @previous_parliament_period ) if @previous_parliament_period
     @next_url = parliament_period_show_url( :parliament_period => @next_parliament_period ) if @next_parliament_period
+    @csv_url = parliament_period_session_list_url( :format => 'csv' )
   end
 end
