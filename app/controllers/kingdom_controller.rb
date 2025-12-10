@@ -19,5 +19,6 @@ class KingdomController < ApplicationController
     @crumb << { label: 'Kingdoms', url: kingdom_list_url }
     @crumb << { label: @page_title, url: nil }
     @section = 'kingdoms'
+    @csv_url = kingdom_reign_list_url( :format => 'csv' )
   end
 end

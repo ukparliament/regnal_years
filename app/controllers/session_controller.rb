@@ -39,5 +39,6 @@ class SessionController < ApplicationController
     @section = 'sessions'
     @previous_url = session_show_url( :session => @previous_session ) if @previous_session
     @next_url = session_show_url( :session => @next_session ) if @next_session
+    @csv_url = session_regnal_year_list_url( :format => 'csv' )
   end
 end
