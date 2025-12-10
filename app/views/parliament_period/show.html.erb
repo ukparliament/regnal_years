@@ -14,10 +14,9 @@
 <div id="sessions">
 	<%= content_tag( 'h2', 'Sessions' ) %>
 	
-	<% @csv_url = parliament_period_session_list_url( :format => 'csv' ) -%>
 	<%= render :partial => 'library_design/feeds/feeds' %>
 	
-	<div class="overflow-auto margin-top-10">
+	<div class="overflow-auto">
 		<table class="table">
 			<%= render :partial => 'session_table_head' %>
 			<tbody>
