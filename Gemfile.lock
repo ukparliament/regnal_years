@@ -290,7 +290,7 @@ DEPENDENCIES
   csv
   debug
   irb
-  json (~> 2)
+  json (< 3)
   library_design!
   pg
   propshaft
