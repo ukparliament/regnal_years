@@ -4,8 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: '.tool-versions'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.1.1"
-gem "json", "<3"
+gem "rails", "~> 8.1.4"
+gem "json"
 # App server
 gem 'puma'
 # Database adapter
